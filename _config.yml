@@ -15,6 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: Removing Complexity
 email: contact@removingcomplexity.com
+author: Josue Balandrano Coronel
 description: >- # this means to ignore newlines until "baseurl:"
   Our aim is that of removing complexity as much as possible
   from software developing/engineering one post at a time.
@@ -22,6 +23,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: rmcomplexity
 github_username:  removingcomplexity
+google_analytics: UA-112404729-1
 
 #github defaults
 github: [metadata]
@@ -31,7 +33,6 @@ kramdown:
   hard_wrap: false
 future: true
 jailed: false
-theme: jekyll-theme-primer
 gfm_quirks: paragraph_end
 
 # Build settings
@@ -55,3 +56,8 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+header_pages:
+  - pages/about.md
+  - pages/contact.md
+  - pages/ask.md
