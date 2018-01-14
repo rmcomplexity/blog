@@ -1,0 +1,115 @@
+---
+# Custom main css
+---
+@import "skeleton/skeleton";
+
+$color-carbon:     #a9a9a9;
+$color-sky:        #caebf2;
+$color-watermelon: #ff6a5c; //red-ish
+$color-neutral:    #efefef;
+$color-marine:     #57bc90; //green-ish
+$color-clean:      #a7d2cb; //light green-ish
+$color-butter:     #fedc3d; //yellow-ish
+$color-sunshine:   #fba100; //orange-ish
+$color-cerulean:   #4484ce;
+//status color
+$color-info: $color-sky;
+$color-warning:    $color-sunshine;
+$color-success: $color-marine;
+$color-error:   $color-watermelon;
+//basic colors
+$color-blue: $color-sky;
+$color-orange:    $color-sunshine;
+$color-green: $color-marine;
+$color-red:   $color-watermelon;
+
+$color-main: $color-cerulean;
+$color-main-lighter: #7ab7ff;
+
+$on-mobile:        400px !default;
+$on-phablet:       550px !default;
+$on-tablet:        750px !default;
+$on-desktop:       1000px !default;
+$on-desktophd:     1200px !default;
+
+$spacing-unit:     30px !default;
+$padding-default:  5px 0px 5px 0px;
+
+$header-background: $color-cerulean;
+$logo-background: #3f3f3f;
+
+//$font-main: 'Inconsolata', monospace;
+$font-main: "Lucida Console", Monaco, monospace;
+$font-secondary: "Trebuchet MS", Helvetica, sans-serif;
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-main;
+}
+
+// Use media queries like this:
+// @include media-query($on-palm) {
+//   .wrapper {
+//     padding-right: $spacing-unit / 2;
+//     padding-left: $spacing-unit / 2;
+//   }
+// }
+@mixin media-query($device) {
+  @media screen and (min-width: $device) {
+    @content;
+  }
+}
+
+a, a:visited {
+    color: $color-red;
+}
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+  margin-bottom: $spacing-unit / 2;
+}
+
+@import "minima/syntax-highlighting";
+@import "rmc/header";
+@import "rmc/logo";
+@import "rmc/posts";
+@import "rmc/footer";
+
+.intro {
+    width: 50%;
+    padding: 0 .5em;
+    margin: 0 auto;
+    margin-bottom: .5em;
+    background: $color-neutral;
+    font-family: $font-secondary;
+    font-size: 1.3em;
+}
+
+.home {
+    min-height: 500px;
+}
+
+//.footer-col-3xs {
+//    width: -webkit-calc(33% - (#{$spacing-unit} / 2));
+//    width:         calc(33% - (#{$spacing-unit} / 2));
+//    /*word-break: break-all;*/
+//    -webkit-hyphens: auto;
+//    -ms-hyphens: auto;
+//    hyphens: auto;
+//}
+//
+//@include media-query($on-tablet){
+//  .footer-col-3xs {
+//    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+//    width:         calc(100% - (#{$spacing-unit} / 2));
+//  }
+//}

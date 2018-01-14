@@ -1,0 +1,14 @@
+<script type="text/javascript">
+  "use strict";
+  (function(){
+    function blinkCursor(){
+      var logo = document.querySelector('.logo .cursor');
+      if (logo.style.visibility === '' || logo.style.visibility === 'visible'){
+        logo.style.visibility = 'hidden';
+      } else {
+        logo.style.visibility = 'visible';
+      }
+    }
+    window.setInterval(blinkCursor, 300);
+  })();
+</script>

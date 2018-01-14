@@ -1,0 +1,26 @@
+.site-nav-wrapper {
+  background: $header-background;
+}
+
+.site-nav {
+    padding: .5em;
+}
+
+.site-nav a {
+    color: white;
+    padding: .8em .5em .7em .5em;
+    text-decoration: none;
+}
+
+.site-nav a:visited,
+.site-nav a:hover,
+.site-nav a:focus {
+    color: white;
+    text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+    color: black;
+    background: $color-main-lighter;
+}

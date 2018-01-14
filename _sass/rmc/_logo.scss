@@ -1,0 +1,32 @@
+a.site-title {
+    display: inline-block;
+}
+
+a.site-title,
+a.site-title:hover,
+a.site-title:visited,
+a.site-title:focus {
+    text-decoration: none;
+}
+
+.logo-wrapper {
+    padding: .5em;
+    min-width: 135px;
+}
+
+.logo-inner {
+    padding: 0px .2em;
+    background: $logo-background;
+}
+
+.prompt, .cursor {
+    color:   $color-neutral;
+}
+
+.rm {
+    color: $color-red;
+}
+
+.complexity {
+    color: white;
+}

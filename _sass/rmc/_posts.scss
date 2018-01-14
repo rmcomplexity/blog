@@ -1,0 +1,25 @@
+ul.post-list {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.post-list li {
+    padding: $padding-default;
+    padding-right: .5em;
+    padding-left: .5em;
+    border:1px solid #eee;
+}
+
+ul.post-list li h3 {
+    margin-bottom: 0px;
+}
+
+ul.post-list li .abstract {
+    margin-top: .5em;
+    padding-left: 1em;
+}
+
+ul.post-list li .post-meta {
+    font-size: .8em;
+}
