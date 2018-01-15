@@ -3,15 +3,15 @@
 ---
 @import "skeleton/skeleton";
 
-$color-carbon:     #a9a9a9;
-$color-sky:        #caebf2;
+$color-carbon:     #a9a9a9; // light black-ish
+$color-sky:        #caebf2; //blue-ish
 $color-watermelon: #ff6a5c; //red-ish
-$color-neutral:    #efefef;
+$color-neutral:    #efefef; //gray-ish
 $color-marine:     #57bc90; //green-ish
 $color-clean:      #a7d2cb; //light green-ish
 $color-butter:     #fedc3d; //yellow-ish
 $color-sunshine:   #fba100; //orange-ish
-$color-cerulean:   #4484ce;
+$color-cerulean:   #4484ce; //main
 //status color
 $color-info: $color-sky;
 $color-warning:    $color-sunshine;
@@ -64,8 +64,8 @@ body {
   }
 }
 
-a, a:visited {
-    color: $color-red;
+a, a:visited, a:hover, a:focus {
+    color: $color-marine;
 }
 
 /**
