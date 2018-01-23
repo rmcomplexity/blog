@@ -4,5 +4,5 @@ title: Home
 permalink: index.html
 ---
 <p class="intro">
-  Helping removing complexity from software development/engineering through understanding one post at a time.
+  Helping removing complexity from complext topics. Focusing on software development/engineering.  
 </p>

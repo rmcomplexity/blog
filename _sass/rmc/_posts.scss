@@ -20,6 +20,44 @@ ul.post-list li .abstract {
     padding-left: 1em;
 }
 
-ul.post-list li .post-meta {
+ul.post-list li .post-meta,
+dl.post-meta {
     font-size: .8em;
+}
+
+dl.post-meta {
+    margin: 0;
+
+    dd, dt {
+        display: inline-block;
+        margin: 0
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    dt:before {
+        content: "|";
+    }
+
+    dt:first-child:before {
+        content: none;
+    }
+
+    dd.tag:after {
+        content: ",";
+    }
+
+    dd.tag:last-child:after {
+        content: none;
+    }
+}
+
+header.post-header {
+    margin-bottom:10px;
+
+    h1 {
+        margin-bottom:5px;
+    }
 }

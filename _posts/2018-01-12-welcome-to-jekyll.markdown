@@ -3,7 +3,13 @@ layout: post
 title:  "Welcome to Jekyll!"
 date:   2018-01-12 09:18:08 -0600
 categories: jekyll update
-abstract: This is an abstract for this post. This post is about some introductory things. <a href=""> Can we put html? </a>
+abstract: This is an abstract for this post. This post is about some introductory things. <a href="asdf"> Can we put html? </a>
+type: Tutorial
+author: Josue Balandrano Coronel
+tags:
+  - Python
+  - Django
+  - Javascript
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
