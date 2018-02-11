@@ -29,6 +29,9 @@ facebook:
 logo: assets/images/rm_complexity.png
 lang: en
 
+paginate: 10
+paginate_path: "/page/:num/"
+
 #github defaults
 github:
   username: RemoveComplexity
@@ -49,6 +52,7 @@ plugins:
   - jekyll-mentions
   - jemoji
   - jekyll-seo-tag
+  - jekyll-paginate
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
