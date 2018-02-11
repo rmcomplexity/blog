@@ -3,7 +3,7 @@ layout: post
 title:  "Welcome to Jekyll!"
 date:   2018-01-12 09:18:08 -0600
 categories: jekyll update
-abstract: This is an abstract for this post. This post is about some introductory things. <a href="asdf"> Can we put html? </a>
+excerpt: This is an abstract for this post. This post is about some introductory things. <a href="asdf"> Can we put html? </a>
 type: Tutorial
 author: Josue Balandrano Coronel
 tags:

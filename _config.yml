@@ -48,7 +48,6 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-feed
   - jekyll-mentions
   - jemoji
   - jekyll-seo-tag
