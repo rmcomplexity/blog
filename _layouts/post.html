@@ -7,26 +7,26 @@ layout: default
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
       <dl class="post-meta">
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        <dt><i class="fa fa-calendar"></i> Date: </dt>
+        <dt><i class="fas fa-calendar"></i> Date: </dt>
         <dd>
           <time datetime="{{post.date | date_to_xmlschema}}" itemprop="datePublished">
             {{ page.date | date: date_format }}
           </time>
         </dd>
         {% if page.author %}
-        <dt><i class="fa fa-pencil"></i> Author: </dt>
+        <dt><i class="fas fa-pencil"></i> Author: </dt>
         <dd>
           {{ page.author }}
         </dd>
         {% endif %}
         {% if page.type %}
-        <dt><i class="fa fa-bookmark"></i> Type: </dt>
+        <dt><i class="fas fa-bookmark"></i> Type: </dt>
         <dd>
           {{ page.type }}
         </dd>
         {% endif %}
         {% if page.tags %}
-        <dt class="tag-list"><i class="fa fa-tag"></i> Tags: </dt>
+        <dt class="tag-list"><i class="fas fa-tag"></i> Tags: </dt>
         {% for tag in page.tags %}
           <dd class="tag">{{tag}}</dd>
         {% endfor %}

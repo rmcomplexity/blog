@@ -8,20 +8,20 @@
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
         </h3>
         <dl class="post-meta">
-          <dt><i class="fa fa-calendar"></i> Date: </dt>
+          <dt><i class="fas fa-calendar"></i> Date: </dt>
           <dd>
             <time datetime="{{post.date | date_to_xmlschema}}" itemprop="datePublished">
               {{ post.date | date: date_format }}
             </time>
           </dd>
           {% if post.author %}
-          <dt><i class="fa fa-pencil"></i> Author: </dt>
+          <dt><i class="fas fa-pen-square"></i> Author: </dt>
           <dd>
             {{ post.author }}
           </dd>
           {% endif %}
           {% if post.type %}
-          <dt><i class="fa fa-bookmark"></i> Type: </dt>
+          <dt><i class="fas fa-bookmark"></i> Type: </dt>
           <dd>
             {{ post.type }}
           </dd>
