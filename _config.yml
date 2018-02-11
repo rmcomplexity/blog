@@ -13,20 +13,25 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Removing Complexity
+title: Remove Complexity
 email: contact@rmcomplexity.com
 author: Josue Balandrano Coronel
 description: >- # this means to ignore newlines until "baseurl:"
   Helping removing complexity from software development through understanding.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: rmcomplexity
-github_username:  removingcomplexity
+url: "https://rmcomplexity.com" # the base hostname & protocol for your site, e.g. http://example.com
+twitter:
+  username: rmcomplexity
 google_analytics: UA-112404729-1
-facebook_pixel: 1595882787191804
+facebook:
+  app_id: 1218784111587751
+  pixel: 1595882787191804
+logo: assets/images/rm_complexity.png
+lang: en
 
 #github defaults
-github: [metadata]
+github:
+  username: RemoveComplexity
 encoding: UTF-8
 kramdown:
   input: GFM
