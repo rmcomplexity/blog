@@ -17,12 +17,13 @@ title: Removing Complexity
 email: contact@rmcomplexity.com
 author: Josue Balandrano Coronel
 description: >- # this means to ignore newlines until "baseurl:"
-  Helping removing complexity from software development/engineering.
+  Helping removing complexity from software development through understanding.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: rmcomplexity
 github_username:  removingcomplexity
 google_analytics: UA-112404729-1
+facebook_pixel: 1595882787191804
 
 #github defaults
 github: [metadata]
@@ -47,14 +48,14 @@ plugins:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
 
 header_pages:
   - pages/about.md
