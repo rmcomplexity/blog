@@ -34,7 +34,7 @@ paginate_path: "/page/:num/"
 
 #github defaults
 github:
-  username: RemoveComplexity
+  username: rmcomplexity
 encoding: UTF-8
 kramdown:
   input: GFM
