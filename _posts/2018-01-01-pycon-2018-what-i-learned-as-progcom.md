@@ -7,8 +7,7 @@ excerpt: PyCon has many different ways of allowing community members to particip
 tags: 
   - Python
   - PyCon
-  - Community
-
+  - Community
 seo:
   type: Article
 published: false
@@ -29,7 +28,7 @@ If you would  like to know  more about the actual  reviewing process the auth
 back  in  2015 and Eric wrote a wonderful article about it, too. Eric was also a ProgCom member this year.
 
 Ths is how  back  in  Dec 2017 I started giving form to some  talk  proposal  ideas.
--- I have never put together a tutorial. Naturally I'm hesitant about submitting a tutorial proposal, Maybe next year.--
+- I have never put together a tutorial. Naturally I'm hesitant about submitting a tutorial proposal, Maybe next year.-
 I had three ideas. These were really raw ideas. A first draft title and, at least, two  main topics.
 I decided to use the Metaprogramming/Metaclasses topic.
 I decided on this  topic for two reasons:
