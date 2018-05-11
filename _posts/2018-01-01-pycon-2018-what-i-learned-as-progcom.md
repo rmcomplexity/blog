@@ -18,6 +18,11 @@ I decided I had to earn it. I know, this sounds intense, it's not. *First* of al
 Coincidentally my criteria of **"earn it"** was to either submit a talk (as mentioned before), become a reviewer and/or volunteer for something.
 I'll expand on the first two on this article.
 
+<figure class="img center">
+  <img src="/assets/images/pycon2018.png" width="200" alt="PyCon 2018 logo">
+  <figcaption><em>That snake is even more impressive in real life</em></figcaption>
+</figure>
+
 Volunteering at PyCon was quickly out of the question because of work related reasons which I won't mention in this article.
 Mainly because these reasons are boring and not particularly aligned to the context of this article.
 Since we are on he topic of **Things I Won't Be Talking About Here**, I should mention I won't be describing, in too much detail, the PyCon reviewing process.
@@ -39,6 +44,11 @@ I still think the topic is really interesting and useful. I agree more with [Dm
 Also, times have changed and I believe there are more uses for metaprogramming/metaclasses than only 1% of the cases. The talk was not accepted. 
 This might start to look like a rant. Trust me, it is not. This is meant to be helpful to anybody who wants to submit a talk to PyCon
 or any other conference for that matter. More on this later.
+
+<figure class="img center">
+  <img src="/assets/images/thought.jpg" width="200" alt="Thoughts image">
+  <figcaption><em>Chalkboard clouds can't contain ideas. Let your ideas run free!</em></figcaption>
+</figure>
 
 ##### Becoming Part of The Program Committee (ProgCom).
 
@@ -67,6 +77,11 @@ There was a constant communication between us all. This is very helpful because 
 that one might not fully understand with people who have more expertise. We did not only benefited from a technical point of view.
 There was also the opportunity to analyze the potential of a talk's **clearness, completeness, relevancy** and pretty much any other
 aspect you can think of.
+
+<figure class="img center">
+  <img src="/assets/images/peer-review.png" width="200" alt="Peer Review Image">
+  <figcaption><em>In practice, people don't talk in "star grades"</em></figcaption>
+</figure>
 
 Having this peer-review also does wonders for *diminishing bias*. Since the conversation always involve
 people from different backgrounds. This is one of the most important aspects of having diversity in a review panel.
