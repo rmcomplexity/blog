@@ -174,3 +174,142 @@ She designes financial systems.
 
 - Stateful testing from hypothesis
 - Formal methods
+
+#### Software Library APIs: Lessons Learned from scikit-learn (Liz Sander)
+
+- Make your api clear and consistent
+- find an abstraction that mirrors your mental model
+- Think about developers as users
+
+#### Flourishing FLOSS: Making your project successful (Anna Osswoski)
+
+- Good documentation
+    - Encourage documentation first.
+    - People will think about the change submission first and how it works.
+- Open soruce projects need contributions from people of all experiences.$
+- Helping someone succeed is the best feeling in the world!
+- Code of conduct
+- listen to your contributors
+- offer financial support
+- esatblish good communication
+- thorough docs
+- aknowlege all contribs
+- offer mentorship
+- find contributors
+- work on a website
+- recognize the importance of contribs
+- give ownership
+- learn to say no and document
+- nurture your community
+
+#### Beyond Scrapping: How to use machine learning when you're not sure where to start ( Julie Lavoie )
+
+- Extracting the date of any page online
+- Mechanical Turk, you program humans
+- soft devs make mistakes
+- use machine learning. Supervised learninga
+- Machine learning is a lot of work
+    - Only use it if the volume of your data, or problem cocmplexity is too much for pevious solutions
+- Get clues. Linguistics, rendering/presentation and markup cues.
+- How do I setup the problem in a way that machine learning can answer it.
+1. Training a model
+2. Get all dom elements w dates
+- Machine learning is about thinking statistically 
+
+#### Taking Django Async (Andrew Godwin)
+
+    Webserver <->                 <-> Django
+                   Channel Layer
+    Webserver <->                 <-> Django
+
+Better to wrap django n an AsyncIO native web server
+- sync_to_async:
+    - Synchronous code has to run in threads. ThreadPoolExecutor does most of the hard work
+    - Caling the orm
+    - rendering etmplates
+    - handing off to django views
+- async_to_sync:
+    - Async code runs on the event loop. We need to go find it! Or make our own.
+    - Make a future
+    - jump to the main thread and add the corutine
+    - tie the coroutine's end to triggering the future
+    - block the thread on the future
+
+#### Reactive Programming with RxPy
+
+Error handling in reactive is done by using en event.
+There are observers and you can subscribe to them. Nothing happens until somebody access the data.
+
+
+#### Keynote #2 (Ying Li)
+
+More developers knowing about security is better for the whole eco-system
+You don't have to be an expert in security to do some basic stuff.
+Like having a baby, you don't need medical training to have a baby. You create a list of needs and do your best.
+Security for babies, CI for babies.
+27% of the python community are web devs.
+Framework and libraries help with security. The developer still needs to know about these features to NOT bypass them.
+OWASP is a great resource.
+27% (jetbrains poll) are data scientists.
+There are security concerns in data, too. Avoid exposing it, etc..
+9% of pyton users focus on dev ops admin and automation.
+Educator should bring up security often and early.
+Where is the endpoint accepted, where is date stored, how does data travels, what type of access do you need?
+Attackers don't usually use advanced attacks. They stick to true and tested attacks.
+It's easier to protect from these types of attacks.
+The back to sleep campaign for babies. SIDS dropped by over 50%
+lowering CSRF attacks. Check OWASP survey.
+
+#### Keynote #3 (Qumisha Goss)
+
+Tynker.com, how did it start?
+Kids wanted to do more, not just "baby stuff"
+Python for kids.
+
+#### Intuitive data visualization in augmented reality
+
+Human beings have challenges for physical en mental environments.
+But we are innumerate. Innumeracy: challenges to conceputalize large numbers.
+- Loossing context
+- De-humanization
+We become factories of creating numbers. Data.
+The challenge is to interpret all theese numbers.
+augmented reality as a corective tool for innumeracy.
+Step 1: Use Blender to load data
+Step 2: Making Bar Charts
+Step 3: Blender to Unity
+Step 4: Animations in Unity
+
+#### How netflix does failovers in 7 minutes flat (Amjith Rmanujam)
+
+Fiailover: Standby ystem takes over when the main system fails.
+Netflix does not own data centers. They use AWS.
+Netflix went down and it was because ELB was down.
+Regional failovers
+Prerequisites:
+    - Stateless services: if I move a service from one machine to another machine nothing should change. Chaos Monkey
+    - Regional replication of data.
+Failover Candidate:
+    - Infrastructure problem isolated to one region
+    - Problem won't follow if we move traffic
+    - Bad code deploy in a region
+Detect the problem:
+    - SPS stream starts per seconda.
+    - Scaling the saviours.
+    - **Netflix Atlas**
+Scale the savior regions
+Shift traffic
+
+Failovers should be transparent to service owners.
+
+Actions:
+    - Periodic tasks
+        - Fetch historical data
+        - Predict cluster sizes
+        - Manage dark clusters
+    - Triggered tasks
+        - Ungate dark instances
+        - Transplant instances
+        - Traffic shift
+
+#### Keynote
