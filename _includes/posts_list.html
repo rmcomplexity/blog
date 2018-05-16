@@ -14,10 +14,10 @@
               {{ post.date | date: date_format }}
             </time>
           </dd>
-          {% if post.author %}
+          {% if post.author_name %}
           <dt><i class="fas fa-pen-square"></i> Author: </dt>
           <dd>
-            {{ post.author }}
+            {{ post.author_name }}
           </dd>
           {% endif %}
           {% if post.seo.type %}

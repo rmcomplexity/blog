@@ -10,6 +10,9 @@ tags:
   - Community
 seo:
   type: Article
+author_name: Josue Balandrano Coronel
+author: rmcomplexity
+image: /assets/imgaes/pycon2018_original.png
 ---
 Attending PyCon has been in my wishlist for a while now. This year I convinced myself to do everything possible to attend PyCon 2018.
 I decided I had to earn it. I know, this sounds intense, it's not. *First* of all there are no requirements to attend PyCon (other than  buying a ticket).
