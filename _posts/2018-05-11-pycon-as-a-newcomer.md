@@ -12,6 +12,4 @@ seo:
   type: Article
 published: false
 ---
-
-Software developer is a hat I have worn for 10 years, now -- *sounds like a lot of time, but it doesn't always feel like it* --.
-
+PyCon 2018 has come to a bittersweet conclusion. 
