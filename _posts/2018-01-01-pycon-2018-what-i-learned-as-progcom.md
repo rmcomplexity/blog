@@ -15,8 +15,8 @@ author: rmcomplexity
 image: /assets/imgaes/pycon2018_original.png
 ---
 Attending PyCon has been in my wishlist for a while now. This year I convinced myself to do everything possible to attend PyCon 2018.
-I decided I had to earn it. I know, this sounds intense, it's not. *First* of all there are no requirements to attend PyCon (other than  buying a ticket).
-*Second*, By **"earn it"** I meant to, at least, submit a talk. And I already had a few ideas.
+I decided I had to earn it. I know, this sounds intense, it's not. *First* of all there are no requirements to attend PyCon (other than buying a ticket).
+*Second*, by **"earn it"** I meant to, at least, submit a talk. And I already had a few ideas.
 *Third*, PyCon has a lot of opportunities to get involved, help  out and meet some awesome people.
 Coincidentally my criteria of **"earn it"** was to either submit a talk (as mentioned before), become a reviewer and/or volunteer for something.
 I'll expand on the first two on this article.
@@ -28,22 +28,22 @@ I'll expand on the first two on this article.
 
 Volunteering at PyCon was quickly out of the question because of work related reasons which I won't mention in this article.
 Mainly because these reasons are boring and not particularly aligned to the context of this article.
-Since we are on he topic of **Things I Won't Be Talking About Here**, I should mention I won't be describing, in too much detail, the PyCon reviewing process.
-If you would  like to know more about the actual reviewing process **Ned Jackson Lovely**
-(the author of the ProgCom platform) [wrote about it][pycon-review-process] back  in 2015
+Since we are on he topic of **Things I Won't Be Talking About Here**, I should mention I won't be describing, in too much detail, PyCon's reviewing process.
+If you would like to know more about the actual reviewing process **Ned Jackson Lovely**
+(the author of the ProgCom platform) [wrote about it][pycon-review-process] back in 2015
 and **Eric J. Ma** [wrote a wonderful article][erics-article] about it, too. Eric was also a part of PyCon's ProgCom this year (2018).
 
-This is how back in Dec 2017 I started giving form to a few presentation ideas.
+This is how, back in Dec 2017, I started writing down a few talk ideas.
 *-- I have never put together a tutorial. Naturally I'm hesitant about submitting a tutorial idea, maybe next year.--*
-I had three ideas. These were really **raw** ideas. These ideas consisted of a first draft title and, at least, two  main topics.
-I decided to use the metaprogramming topic. Two main reasons were involved in this decision:
+I had three ideas in mind. These were really **raw**. These ideas consisted of: a first draft title and, at least, two  main topics.
+I decided to use **metaprogramming** as my submission topic. Two main reasons were involved in this decision:
 
 1. I find metaprogramming, and its uses, very interesting.
 2. I have used metaprogramming in  different projects and  I've seen some widely used libraries/frameworks use it successfully.
 
 I should say I am fully aware of what [Tim Peters said about metaclasses][tim-peters-quote]
 (to this day, I have not found where this quote was first introduced).
-I still think the topic is really interesting and useful. I agree more with [Dmitry Vakhrushev's article][dimitry-article].
+I still think the topic [metaprogramming] is really interesting and useful. I agree more with [Dmitry Vakhrushev's article][dimitry-article].
 Also, times have changed and I believe there are more uses for metaprogramming/metaclasses than only 1% of the cases. The talk was not accepted. 
 This might start to look like a rant. Trust me, it is not. This is meant to be helpful to anybody who wants to submit a talk to PyCon
 or any other conference for that matter. More on this later.
@@ -61,13 +61,13 @@ I was lucky enough to stumble upon an [article from 2012][pycon2012-call-for-act
 I am not entirely sure [yet] what **Mr. Kaplan's** role was on PyCon 2012 but I am *very much grateful* for that article.
 In this article **Mr. Kaplan** invites volunteers to subscribe to the [PyCon Program Committee mailing list][progcom-mailing-list].
 I subscribed and in a few weeks I received a call for action. The review process had begun.
-The ProgCom mailing list is open for any member of the community. To some of you, this might look a bit strange.
+The ProgCom mailing list is open to any member of the community. To some of you, this might look a bit strange.
 To the contrary, most conferences' review committee is integrated of members from the community.
-This is great, because it means that PyCon (as many other conferences) are built by your own peers.
+This is great, because it means that PyCon (as many other conferences) is built by your own peers.
 
 PyCon's review process consist of two main stages. *First Stage* is, what we could call, a *light* filter.
 There is a predefined checklist which all talks must adhere to.
-The *Second Stage* consist of creating multiple groups based on the submitted talks' topics.
+The *Second Stage* consist of creating multiple groups based on topics drawn from the submitted talks.
 Out of each group there is only one talk selected. This is done by a collective vote.
 If a reviewer also submitted a talk, they will not be able to neither review their own talk nor vote on the group said talk is placed.
 All of this is possible thanks to all the people who have contributed to PyCon's ProgCom platform.
@@ -91,7 +91,10 @@ people from different backgrounds. This is one of the most important aspects of 
 We all are human beings and we all have biases. There is really not much to do about that, it is part of what makes us human.
 But, by analyzing talks with people with different biases it becomes easier to **not give into this biases.**
 
-For me, these conversation where I draw the most benefits. I was able to learn a great deal about new topics and also topics with which I was already very acquainted. I learned more about **security, machine learning and CPython** in the few weeks I was part of the ProgCom than I had been able to learn out on my own. I would like to believe I also helped other committee members to learn a few new curiosities.
+For me, these conversation is from where I draw the most benefits. I was able to learn a great deal about new topics and also
+topics with which I was already very acquainted. I learned more about **security, machine learning and CPython** in the few weeks I was
+part of the ProgCom than I had been able to learn out on my own.
+I would like to believe I also helped other committee members to learn a few new curiosities.
 
 ##### Advice For Future Submissions
 
