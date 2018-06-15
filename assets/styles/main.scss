@@ -1,6 +1,7 @@
 ---
 # Custom main css
 ---
+
 @import "skeleton/skeleton";
 
 $color-carbon:     #a9a9a9; // light black-ish
@@ -113,3 +114,18 @@ ul, ol, dl, figure,
 //    width:         calc(100% - (#{$spacing-unit} / 2));
 //  }
 //}
+
+#gitter-chat {
+    position:relative;
+    width: 100%;
+    height:300px;
+}
+
+#gitter-chat iframe {
+    width:100%;
+    height:100%;
+}
+
+#gitter-chat.is-collapsed{
+    display:none;
+}

@@ -26,11 +26,9 @@ We also have a gitter chatroom where you can ask any question about software dev
 Technical and non-technical questions are welcome!
 
 <button class="btn btn-success" id="gitter-chat-btn">
-    Open Chat
+    Toggle Chat
 </button>
-<button class="js-gitter-toggle-chat-button" data-gitter-toggle-chat-state="true">Open Chat</button>
-<button class="js-gitter-toggle-chat-button" data-gitter-toggle-chat-state="false">Close Chat</button>
-<div id="gitter-chat" style="position:relative;">
+<div id="gitter-chat" class="is-collapsed">
 </div>
 
 <script>
