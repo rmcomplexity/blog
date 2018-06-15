@@ -34,7 +34,7 @@ Technical and non-technical questions are welcome!
 <script>
   ((window.gitter = {}).chat = {}).options = {
     room: 'rmcomplexity',
-    activationElement: '#gitter-chat-btn",
+    activationElement: '#gitter-chat-btn',
     targetElement: '#gitter-chat'
   };
 </script>
