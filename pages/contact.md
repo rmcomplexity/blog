@@ -22,11 +22,20 @@ icon: fa-comment-alt
 ## Gitter
 
 We also have a gitter chatroom where you can ask any question about software development.
+
 Technical and non-technical questions are welcome!
+
+<button class="btn btn-success" id="gitter-chat-btn">
+    Open Chat
+</button>
+<div id="gitter-chat">
+</div>
 
 <script>
   ((window.gitter = {}).chat = {}).options = {
-    room: 'rmcomplexity'
+    room: 'rmcomplexity',
+    activationElement: '#gitter-chat-btn",
+    targetElement: '#gitter-chat'
   };
 </script>
 <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
