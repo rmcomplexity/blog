@@ -18,3 +18,15 @@ icon: fa-comment-alt
 * twitter: <i class="fab fa-twitter"></i>[/eusoj_xirdneh](https://twitter.com/eusoj_xirdneh)
 * github: <i class="fab fa-github"></i>[/xirdneh](https://github.com/xirdneh)
 * irc: josuebc (usually on `#freenode`)
+
+## Gitter
+
+We also have a gitter chatroom where you can ask any question about software development.
+Technical and non-technical questions are welcome!
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'rmcomplexity'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
