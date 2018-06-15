@@ -14,7 +14,7 @@ icon: fa-comment-alt
 
 ## Author Contact
 
-* e-mail: <i class="fab fa-envelope"></i> [jbc@rmcomplexity.com](mailto:jbc@rmcomplexity.com)
+* e-mail: <i class="fas fa-envelope"></i> [jbc@rmcomplexity.com](mailto:jbc@rmcomplexity.com)
 * twitter: <i class="fab fa-twitter"></i>[/eusoj_xirdneh](https://twitter.com/eusoj_xirdneh)
 * github: <i class="fab fa-github"></i>[/xirdneh](https://github.com/xirdneh)
 * irc: josuebc (usually on `#freenode`)
