@@ -26,7 +26,7 @@ We also have a gitter chatroom where you can ask any question about software dev
 Technical and non-technical questions are welcome!
 
 <button class="btn btn-success" id="gitter-chat-btn">
-    Toggle Chat
+    Open Chat
 </button>
 <div id="gitter-chat" class="is-collapsed">
 </div>
