@@ -10,7 +10,7 @@ icon: fa-comment-alt
 
 * e-mail: <i class="fas fa-envelope"></i> [contact@rmcomplexity.com](mailto:contact@rmcomplexity.com)
 * twitter: <i class="fab fa-twitter"></i>[/rmcomplexity](https://twitter.com/rmcomplexity)
-* github: <i class="fab fa-github"></i>[/rmcomplexity](github.com/rmcomplexity)
+* github: <i class="fab fa-github"></i>[/rmcomplexity](https://github.com/rmcomplexity)
 
 ## Author Contact
 
