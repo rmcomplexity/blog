@@ -2,7 +2,7 @@
 # Custom main css
 ---
 
-@import "skeleton/skeleton";
+@import "spectre/src/spectre";
 
 $color-carbon:     #a9a9a9; // light black-ish
 $color-sky:        #caebf2; //blue-ish
@@ -13,24 +13,25 @@ $color-clean:      #a7d2cb; //light green-ish
 $color-butter:     #fedc3d; //yellow-ish
 $color-sunshine:   #fba100; //orange-ish
 $color-cerulean:   #4484ce; //main
+
 //status color
-$color-info: $color-sky;
-$color-warning:    $color-sunshine;
-$color-success: $color-marine;
-$color-error:   $color-watermelon;
+$info-color: $color-sky;
+$warning-color:    $color-sunshine;
+$success-color: $color-marine;
+$error-color:   $color-watermelon;
 //basic colors
 $color-blue: $color-sky;
 $color-orange:    $color-sunshine;
 $color-green: $color-marine;
 $color-red:   $color-watermelon;
 
-$color-main: $color-cerulean;
-$color-main-lighter: #7ab7ff;
+$primary-color: $color-cerulean;
+$primary-lighter-color: #7ab7ff;
 
 $on-mobile:        400px !default;
 $on-phablet:       550px !default;
 $on-tablet:        750px !default;
-$on-desktop:       1000px !default;
+$on-desktop:       1024px !default;
 $on-desktophd:     1200px !default;
 
 $spacing-unit:     30px !default;
@@ -63,6 +64,15 @@ body {
   @media screen and (min-width: $device) {
     @content;
   }
+}
+
+@include media-query($on-desktop) {
+    .site-nav-inner, .container{
+        width: 1024px;
+    }
+    .site-nav-inner {
+        margin:auto;
+    }
 }
 
 a, a:visited, a:hover, a:focus {
@@ -98,22 +108,6 @@ ul, ol, dl, figure,
 .home {
     min-height: 500px;
 }
-
-//.footer-col-3xs {
-//    width: -webkit-calc(33% - (#{$spacing-unit} / 2));
-//    width:         calc(33% - (#{$spacing-unit} / 2));
-//    /*word-break: break-all;*/
-//    -webkit-hyphens: auto;
-//    -ms-hyphens: auto;
-//    hyphens: auto;
-//}
-//
-//@include media-query($on-tablet){
-//  .footer-col-3xs {
-//    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-//    width:         calc(100% - (#{$spacing-unit} / 2));
-//  }
-//}
 
 #gitter-chat {
     position:relative;

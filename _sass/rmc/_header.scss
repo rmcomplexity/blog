@@ -22,5 +22,10 @@
 .site-nav a:hover,
 .site-nav a:focus {
     color: black;
-    background: $color-main-lighter;
+    background: $primary-lighter-color;
+}
+
+.site-nav-wrapper .social-media-list,
+.site-nav-wrapper .social-media-list a {
+    color: white;
 }
