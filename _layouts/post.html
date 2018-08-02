@@ -4,7 +4,14 @@ layout: default
 <article class="post h-entry">
 
   <header class="post-header">
-    <h1 class="post-title p-name">{{ page.title | escape }}</h1>
+    {% if page.image %}
+        <img src={{ page.image }}
+             class="img-responsive"
+             style="margin:10px 0px;">
+        <h1 class="post-title p-name text-assistive">{{ page.title | escape }}</h1>
+    {% else %}
+        <h1 class="post-title p-name">{{ page.title | escape }}</h1>
+    {% endif %}
       <dl class="post-meta">
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
         <dt><i class="fas fa-calendar"></i> Date: </dt>
@@ -32,18 +39,6 @@ layout: default
         {% endfor %}
         {% endif %}
       </dl>
-
-    <!--
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        {{ page.date | date: date_format }}
-      </time>
-      {% if page.author %}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
-      {% endif %}
-    </p>
-    -->
   </header>
 
   <div class="post-content e-content">
