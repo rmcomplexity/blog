@@ -56,6 +56,7 @@ dl.post-meta {
 
 header.post-header {
     margin-bottom:10px;
+    text-align: center;
 
     h1 {
         margin-bottom:5px;
@@ -72,4 +73,20 @@ figure.img.center {
 
 figure.img figcaption {
     font-size:.8em;
+}
+
+.article-body {
+    margin:auto;
+    max-width: 740px;
+    font-size:21px;
+    font-family: "Times New Roman", Times, serif;
+    margin-top: 2em;
+}
+
+.article-content {
+    margin: auto;
+}
+
+a, a:visited, a:hover, a:focus {
+    color: $color-marine;
 }

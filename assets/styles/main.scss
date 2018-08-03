@@ -51,6 +51,8 @@ $font-secondary: "Trebuchet MS", Helvetica, sans-serif;
 
 body {
     font-family: $font-main;
+    font-size: 16px;
+    color: black;
 }
 
 // Use media queries like this:
@@ -73,10 +75,6 @@ body {
     .site-nav-inner {
         margin:auto;
     }
-}
-
-a, a:visited, a:hover, a:focus {
-    color: $color-marine;
 }
 
 /**
