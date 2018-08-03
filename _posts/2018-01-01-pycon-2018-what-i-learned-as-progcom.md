@@ -14,6 +14,7 @@ author_name: Josue Balandrano Coronel
 author: rmcomplexity
 image: /assets/images/what-i-learned-as-a-progcom.png
 ---
+
 Attending PyCon has been in my wishlist for a while now. This year I convinced myself to do everything possible to attend PyCon 2018.
 I decided I had to earn it. I know, this sounds intense, it's not. *First* of all there are no requirements to attend PyCon (other than buying a ticket).
 *Second*, by **"earn it"** I meant to, at least, submit a talk. And I already had a few ideas.
@@ -53,7 +54,8 @@ or any other conference for that matter. More on this later.
   <figcaption><em>Chalkboard clouds can't contain ideas. Let your ideas run free!</em></figcaption>
 </figure>
 
-##### Becoming Part of The Program Committee (ProgCom).
+Becoming Part of The Program Committee (ProgCom).
+--------------------------------------------------
 
 There was I, trying to put together a talk submission. Using all the tricks I knew to search on the vast sea of information that is the internet.
 Trying to get a sense of **how** I should write the talk outline, introduction, etc...
@@ -72,7 +74,8 @@ Out of each group there is only one talk selected. This is done by a collective 
 If a reviewer also submitted a talk, they will not be able to neither review their own talk nor vote on the group said talk is placed.
 All of this is possible thanks to all the people who have contributed to PyCon's ProgCom platform.
 
-##### The Art of Peer-review
+The Art of Peer-review
+-----------------------
 
 There were many reviewers working together to build the best possible PyCon for everyone to enjoy.
 ProgCom members came from different technical and social backgrounds from all over the world.
@@ -96,7 +99,8 @@ topics with which I was already very acquainted. **Security, machine learning an
 about in the few weeks I was part of the ProgCom.
 I would like to believe I also helped other committee members to learn a few new curiosities.
 
-##### Advice For Future Submissions
+Advice For Future Submissions
+------------------------------
 
 As I mentioned in the beginning, my talk was not accepted. There is nothing wrong on having a talk rejected from a conference.
 Specially a conference as big as PyCon. I saw very good, well written, talks being rejected because, simply, there wasn't enough
@@ -112,7 +116,8 @@ And not only on PyCon but also try to get involved in other conferences. Reading
 for your own submissions. Even volunteering for anything on-site can give you a better perspective of the needs of other attendees
 which you might not be familiar with. And **last, but not least** you will most definitely will meet amazing people.
 
-##### By The Community, For The Community
+By The Community, For The Community
+------------------------------------
 
 I wrote this article to show, from my perspective, how PyCon is build **by the community, for the community** and to, hopefully,
 encourage others to participate in future conferences (not only PyCon).
