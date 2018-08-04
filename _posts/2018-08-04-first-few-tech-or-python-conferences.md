@@ -14,7 +14,7 @@ seo:
 author_name: Josue Balandrano Coronel
 author: rmcomplexity
 image: /assets/images/first-few-tech-or-python-conference-s.png
-published: false
+published: true
 ---
 
 Although this article comes quite late since PyCon 2018 ended back in May and this post was originally
