@@ -119,7 +119,9 @@ I am hoping to participate in this year's [DjangoCon US][django-con-us]'s open s
 Below is a picture of the grid boards used by this year's PyCon.
 
 <figure class="img center">
-  <img src="/assets/images/open-spaces-pycon-schedule.jpg" alt="PyCon's Open Spaces Schedule">
+  <img src="/assets/images/open-spaces-pycon-schedule.jpg"
+       alt="PyCon's Open Spaces Schedule"
+       class="img-responsive">
   <figcaption><em>Look, it's self organizing!.</em></figcaption>
 </figure>
 
@@ -144,7 +146,9 @@ they needed help with or wanted to know more about. With this exercise the conve
 I was able to take notes on the main topics we talked about, below you can see an image of these notes.
 
 <figure class="img center">
-  <img src="/assets/images/celery_open_space_notes.jpg" alt="Celery Open Space Notes">
+  <img src="/assets/images/celery_open_space_notes.jpg"
+       alt="Celery Open Space Notes"
+       class="img-responsive">
   <figcaption><em>Graphologists have a field day with my handwriting.</em></figcaption>
 </figure>
 

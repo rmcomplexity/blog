@@ -23,7 +23,10 @@ Coincidentally my criteria of **"earn it"** was to either submit a talk (as ment
 I'll expand on the first two on this article.
 
 <figure class="img center">
-  <img src="/assets/images/pycon2018.png" width="200" alt="PyCon 2018 logo">
+  <img src="/assets/images/pycon2018.png"
+       style="max-width:200ps;"
+       alt="PyCon 2018 logo"
+       class="img-responsive">
   <figcaption><em>That snake is even more impressive in real life</em></figcaption>
 </figure>
 
@@ -50,7 +53,10 @@ This might start to look like a rant. Trust me, it is not. This is meant to be h
 or any other conference for that matter. More on this later.
 
 <figure class="img center">
-  <img src="/assets/images/thought.jpg" width="200" alt="Thoughts image">
+  <img src="/assets/images/thought.jpg"
+       alt="Thoughts image"
+       style="max-width:200x;"
+       class="imgr-responsive">
   <figcaption><em>Chalkboard clouds can't contain ideas. Let your ideas run free!</em></figcaption>
 </figure>
 
@@ -85,7 +91,10 @@ There was also the opportunity to analyze the potential of a talk's **clearness,
 aspect you can think of.
 
 <figure class="img center">
-  <img src="/assets/images/peer-review.png" width="200" alt="Peer Review Image">
+  <img src="/assets/images/peer-review.png"
+       alt="Peer Review Image"
+       style="max-width:200px;"
+       class="img-responsive">
   <figcaption><em>In practice, people don't talk in "star grades"</em></figcaption>
 </figure>
 
