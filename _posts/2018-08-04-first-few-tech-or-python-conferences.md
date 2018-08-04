@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "First (Few) Tech (or Python) Conference(s)"
-date:   2018-08-12 17:12:00 -0600
+date:   2018-08-04 12:45:00 -0600
 categories: article
 excerpt: Things I've been learning and discovering as I attend more tech conferences.
 tags: 
@@ -28,10 +28,10 @@ Navigating from conversation to conversation, planting curious seeds in any atte
 Authors of widely used libraries and frameworks were being humanized by all the interactions between said authors and
 the rest of the community. Little by little GitHub handles transformed into approachable peers.
 A welcoming sense of belonging filled the halls.
-One could truly appreciate the great effort from the organizers which was poured into this conference.
+One can truly appreciate the great effort from the organizers which is poured into this conference.
 An event made by the python community for the python community.
 
-This feeling of community is not unique to PyCon, it is a constant in every tech conference I've been to.
+This feeling of community is not unique to PyCon, it is a constant in every python related conference I've been to.
 In reality, it has much less to do with the people organizing the conference and more with who and how
 you approach your peers. 
 
@@ -76,11 +76,11 @@ meet a lot of interesting people before, after or even while the keynote is happ
 Talks
 ------
 
-A great reason to attend a conference it's its lineup. A lot of conferences are able to invest in a good
+A great reason to attend a conference is its lineup. A lot of conferences are able to invest in a good
 audio-visual package, and they are able to record every presentation at the conference. This is great
 since one can go back and re-watch interesting talks. Sometimes this is taken as if it is not that good of an idea
 to actually attend the presentation. Let me tell you that is not so black and white.
-The fact that talks are recorder give the attendees some freedom to do more things at a conference, which
+The fact that talks are recorded give the attendees some freedom to do more things at a conference, which
 we'll talk about later. Watching a talk live has its own rewards. The main upside I see about attending
 talks is that, most of the time, you get to ask questions to the speaker. Some speakers prefer to not
 use time from their talk on questions from the public, instead you can probably approach the speaker afterwards.
@@ -100,8 +100,8 @@ OK to feel overwhelmed while at a conference**. I tend to feel pressured to atte
 been able to get my employer to pay for the conferences I've attended. The fact that somebody else is paying for my
 ticket makes me feel it's part of my job to participate in as many things as possible in a conference.
 While this might be partially true, we also have to remember to take care of ourselves. It's OK to go to the hotel
-room or airbnb, or go to a silent room (if you have access to one), or maybe just go and grab some lunch outside of
-the conference to avoid feeling to overwhelmed. Believe me, you will feel better and you will even retain more information.
+room or Airbnb, or go to a silent room (if you have access to one), or maybe just go and grab some lunch outside of
+the conference to avoid feeling too overwhelmed. Believe me, you will feel better and you will even retain more information.
 There is a great [article by zapier][zapier-introvert-article] about attending a conference as an introvert.
 
 Open Spaces
@@ -110,10 +110,10 @@ Open Spaces
 This year's PyCon was the first time I attend PyCon and was the first time I experienced, firsthand,
 what [Open Spaces][open-spaces] are. I've been to different conferences with an Open Space track, but
 for some reason in this year's PyCon people were talking more about going to open spaces. I was not sure
-what to expect of an open space and it seemed like everyone was already acquainted with how the whole thing worked.
-Let me summarize what open spaces are, at least to me: Open Spaces is a particular gathering format where the
+what to expect of an open space and it seemed everyone was already acquainted with how the whole thing worked.
+Let me summarize what open spaces are, at least to me: Open Spaces are a particular gathering format where the
 content is created by whomever attends. I know [DjangoCon US][django-con-us] has open spaces some years, which is awesome.
-I found this year's PyCon used a couple big grid boards where you could place a post it (or card) with the topic
+I found this year's PyCon used a couple big grid boards where you could place a post-it (or card) with the topic
 of an open space. These grid boards where right in the middle of the hallway so everyone noticed them.
 I am hoping to participate in this year's [DjangoCon US][django-con-us]'s open space track.
 Below is a picture of the grid boards used by this year's PyCon.
@@ -130,10 +130,10 @@ After you've chosen a slot and a topic you show up at the reserved room and wait
 Then the open space starts. In the [Open Space's User Guide][open-spaces-guide] mentions that an open space
 starts when it has to start. This is a more informal way of gathering people and talk about stuff.
 I went to a very interesting open space about Geographic Information Systems (GIS) and then to a
-writing open space lead by one and only [Bruce Eckel][bruce-eckel].
+writing open space lead by the one and only [Bruce Eckel][bruce-eckel].
 
 Attending to a few open spaces made me realize I wanted to participate more. I went on and looked
-for a spot on one of those big grid boards. It was going to be the last day of the conference
+for a spot on one of those big grid boards. The slot was on the last day of the conference
 and I thought this was better, that way I wouldn't feel bad if people didn't come.
 I wrote on a piece of paper **"Task Queues (Celery and such)"**. I started telling some
 new people I met at the conference about the Open Space I was organizing, and they all responded
@@ -153,7 +153,7 @@ that helped me on my very first open space:
 
 1. Let the conversation flow but beware some people won't know what specific acronyms or "lingo" means.
     It's ok to ask whomever is talking to explain what they mean for the rest of the group.
-2. Try to take notes, either on a white board or a big piece of paper. Leave your details on top of where
+2. Try to take notes, either on a white board or a big piece of paper. Leave your details on top of wherever
     you're taking notes and make yourself available afterwards.
 3. It's OK to interrupt someone if you think the conversation is being monopolized into one topic.
     There are more people and an open space is made by everyone.
