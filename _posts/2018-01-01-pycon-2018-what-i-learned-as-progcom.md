@@ -24,7 +24,7 @@ I'll expand on the first two on this article.
 
 <figure class="img center">
   <img src="/assets/images/pycon2018.png"
-       style="max-width:200ps;"
+       style="max-width:200px;"
        alt="PyCon 2018 logo"
        class="img-responsive">
   <figcaption><em>That snake is even more impressive in real life</em></figcaption>
@@ -55,7 +55,7 @@ or any other conference for that matter. More on this later.
 <figure class="img center">
   <img src="/assets/images/thought.jpg"
        alt="Thoughts image"
-       style="max-width:200x;"
+       style="max-width:200px;"
        class="imgr-responsive">
   <figcaption><em>Chalkboard clouds can't contain ideas. Let your ideas run free!</em></figcaption>
 </figure>
