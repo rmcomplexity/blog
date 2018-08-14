@@ -126,3 +126,15 @@ ul, ol, dl, figure,
     top: -20px;
     background:none;
 }
+
+code {
+    background-color: #eef;
+    color: black;
+}
+
+pre {
+    code {
+        background: none;
+        white-space: pre-wrap;
+    }
+}
