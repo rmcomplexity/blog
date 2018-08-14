@@ -229,7 +229,7 @@ As we can see not every value gets simply overridden after merging.
         concatenated. Meaning we **can never completly override the value set
         on the first file, we can only add more values to the array or map**.
         I recommend being conservative with the value used on the first file.
-    - `environment` and `lables` are merged together.
+    - `environment` and `labels` are merged together.
         Meaning, we can add more values to the array or map **and we can override
         previously set values**. The trick here is that the values used in this
         array or map are in the form of `UNIQUE_STRING:VALUE`. `docker-compose` will
