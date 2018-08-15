@@ -26,6 +26,9 @@ google_analytics: UA-112404729-1
 facebook:
   app_id: 1218784111587751
   pixel: 1595882787191804
+disqus:
+  shortname: rmcomplexity
+
 logo: assets/images/rm_complexity.png
 lang: en
 

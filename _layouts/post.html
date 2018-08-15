@@ -44,10 +44,6 @@ layout: default
   <div class="post-content e-content article-body">
     {{ content }}
   </div>
-
-  {% if site.disqus.shortname %}
-    {% include disqus_comments.html %}
-  {% endif %}
 <!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 <style type="text/css">
@@ -58,7 +54,7 @@ layout: default
 <div id="mc_embed_signup" class="form-group">
 <form action="https://rmcomplexity.us19.list-manage.com/subscribe/post?u=46bd6de5684eb19e3476e3617&amp;id=1b1376d414" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
-	<label for="mce-EMAIL" class="form-label">Subscribe to our mailing list</label>
+	<label for="mce-EMAIL" class="form-label">Subscribe to our mailing list to receive notifications about new articles!</label>
 	<input type="email" value="" name="EMAIL" class="email form-input" id="mce-EMAIL" placeholder="email address" required>
     <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_46bd6de5684eb19e3476e3617_1b1376d414" tabindex="-1" value=""></div>
@@ -67,6 +63,10 @@ layout: default
 </form>
 </div>
 <!--End mc_embed_signup-->
+
+  {% if site.disqus.shortname %}
+    {% include disqus_comments.html %}
+  {% endif %}
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
