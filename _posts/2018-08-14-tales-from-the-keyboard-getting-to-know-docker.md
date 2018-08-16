@@ -83,7 +83,6 @@ can see in the Docker settings. This is called **File Sharing**.
 <figure class="img center">
   <a href="/assets/images/getting_to_know_docker/docker-file-sharing.png">
     <img src="/assets/images/getting_to_know_docker/docker-file-sharing.png"
-         style="max-width:600px;"
          alt="Docker Settings Share Files"
          class="img-responsive">
   </a>
@@ -129,7 +128,6 @@ Usually incrementing the memory through Docker's settings is enough:
 <figure class="img center">
   <a href="/assets/images/getting_to_know_docker/docker-vm-advanced.png">
     <img src="/assets/images/getting_to_know_docker/docker-vm-advanced.png"
-         style="max-width:600px;"
          alt="Docker VM Advanced Settings"
          class="img-responsive">
   </a>
