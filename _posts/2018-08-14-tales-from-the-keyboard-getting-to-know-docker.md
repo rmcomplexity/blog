@@ -333,8 +333,11 @@ up, when this happens I find it helpful to go step by step:
     ~~~
 4. Run services:
     ~~~shell
-    $ docker-compose up
+    $ docker-compose start
     ~~~
+
+> **Note:** The previous list is not the actual steps taken by docker,
+    but it is a simple way to simulate what happens.
 
 > **Note:** `docker-compose build` will only work correctly
     if the [build configuration][docker-compose-build] is defined in the `docker-compose.yml`
@@ -371,6 +374,17 @@ $ docker-compose down --rmi=all -v --remove-orphans
 The previous command will remove *all* images for a project (`--rmi=all`),
 every volume created (`-v`) and every orphan container left (`--remove-orphans`).
 Next time I use `docker-compose up` everything for that project will be created again.
+
+We can use `docker-compose down`, `docker-compose stop` or `docker-compose kill` to stop
+the services. The difference between `down` and `stop` is that `down` will delete
+any containers and networks created by default, if needed you can specify to delete
+volumes as stated above. `stop` will only stop the containers, you can re-start the services
+by using `docker-compose start`, this is better suited for a temporary stop on services.
+If everything else fails you can force the services to be stopped by using `kill`.
+I strongly recommend to only use `kill` in your local development because some containers
+can end up in a false state when using `kill`. If this happens and you have to run `kill` in
+production I recommend to use `docker-compose rm -f` to remove all containers and then
+bring everything up. This has been really helpful to me a lot of times.
 
 These are some things I learned when I first started using docker.
 As with any technology, docker can be a breeze to use until it is not.
