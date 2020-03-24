@@ -23,17 +23,6 @@ frustration comes into place when we can't quite configure it the way we want. I
 article we'll go through some real world examples to better understand how can we setup
 and use logging with Python, Django and Docker.
 
-Logging is one of the best ways to keep track of what is going on inside your code while
-it is running. Python comes with a very powerful logging library but with great power
-things can start to get a bit complicated. On top of all the different things one can
-do with Python's logging library we also have to take into consideration other
-technologies used in a project such as Django and Docker.
-
-Most of the projects we work here at the [Texas Advanced Computing Center (TACC)][tacc]
-have multiple stakeholders. Metrics and reports are an imperative element for our
-stakeholders and we create some of these reports from our logs using [splunk][splunk].
-Let's start with a quick overview of Python's logging library.
-
 ## Logging With Python
 
 Following Python's philosophies the logging library can be easily used, for example:
