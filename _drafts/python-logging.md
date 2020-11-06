@@ -18,22 +18,14 @@ author: rmcomplexity
 image: /assets/images/logging_with_django_and_docker/logging-with-django-and-docker.png
 ---
 
-Setting up logging on a project can seem like an overwhelming task and some times
-frustration comes into place when we can't quite configure it the way we want. In this
-article we'll go through some real world examples to better understand how can we setup
-and use logging with Python, Django and Docker.
-
 Logging is one of the best ways to keep track of what is going on inside your code while
 it is running. Python comes with a very powerful logging library but with great power..
-things start to get a bit complicated. On top of all the different things one can
-do with Python's logging library we also have to take into consideration other
-technologies used in a project such as Django and Docker.
+things start to get a bit complicated.
 
 Logs can also help us keep track of key metrics and eventually visualize them.
-
 Let's start with a quick overview of Python's logging library.
 
-## What is `BasicConfig`?
+## What is `basicConfig`?
 
 Following Python's philosophies the logging library can be easily used, for example:
 
@@ -43,22 +35,19 @@ logging.warning("Warning log message.")
 ```
 
 And that's it. The example above will print a log message with `WARNING` level.
-If you run the previous script you will see an output such as:
+If you run the code above you will see this output:
 
 ```shell
 WARNING:root:Warning log message.
 ```
 
-An interesting thing happens if we try to print an `INFO` or `DEBUG` log message.
-We do not see anything on the output if we try to use `logging.info("Info log message.")`.
-
-Another thing to note here is what is printed before our message: `WARNING:root:`. The
-reason for this is the default logging configuration. The default configuration
+Take a look at what is printed before our message: `WARNING:root:`, this comes from
+the default logging configuration. The default configuration
 will only print [`WARNING` and above levels][logging-levels] and will prepend
 the log level and the name of the logger -- *since we haven't created any loggers
 the `root` logger is used. More on this later* --. The format each log message uses
 can be configured and there is a lot of useful information readily available
-when formatting. For each log event there is an instance of `LogRecord`.
+when formatting. For each log event there is an instance of [`LogRecord`][logrecord-attrs].
 
 The easiest way to configure the logging format is [using `basicConfig`][basic-config].
 For instance, if we would like to print only the log level, line number, log message
@@ -73,9 +62,12 @@ logging.basicConfig(
 ```
 
 We can set the format for our log messages using the `LogRecord`
-[class' attributes][logrecord-attrs] and %-style formatting -- *%-style formatting is still
-used to maintain backwards compatibility* --. Since Python 3.2 we can also use `${}` and `{}`
-style to format messages, but we have to specify the style we're using, by default %-style is used.
+[class' attributes][logrecord-attrs] and `%`-style formatting -- *`%`-style formatting is still
+used to maintain backwards compatibility* --.
+Since Python 3.2 we can also use `$` and `{}` style to format messages,
+but we have to specify the style we're using, by default `%`-style is used.
+The style is configured by using the `style` parameter in `basicConfig`
+(`logging.basicConfig(style='{')`).
 With the updated configuration we can now see every log level message, for example:
 
 ```python
@@ -86,26 +78,51 @@ With the updated configuration we can now see every log level message, for examp
 [DEBUG]:13 - Debug log message.
 ```
 
-> **Best Practice:**
->   Define a custom log format for easier log parsing.
+<blockquote>
+  <i class="fas fa-quote-left fa-2x">&nbsp;</i>
+  <h3>Best Practice</h3>
+  <p>
+   Define a custom log format for easier log parsing.
+  </p>
+  <i class="fas fa-quote-right fa-2x">&nbsp;</i>
+</blockquote>
 
 > **Note:** Use the `LogRecord` [class' attributes][logrecord-attrs] to configure a custom format.
+
+`basicConfig` will always be called by the root logger if no handlers are defined,
+unless the parameter `force` is set to `True` (`logging.basicConfig(force=True)`).
+By default `basicConfig` will configure the root logger to output logs to `stdout`,
+with the default format of `{level}:{logger_name}:{message}`.
 
 ## Custom Loggers
 
 In the past examples we've been using the `root` logger, but python's logging library
 allow us to create custom loggers which will *always* be children of the `root` logger.
-We can create a new logger by using `logging.getLogger("mylogger")`, this method
-only accepts one parameter, the `name` of the logger. Note `getLogger` is a
-*get_or_create* method. It is pretty cheap to create a logger and there is no
-need to pass around a logger object. We can use `getLogger` with the same `name`
+We can create a new logger by using [`logging.getLogger("mylogger")`][get-logger],
+this method only accepts one parameter, the `name` of the logger. `getLogger` is a
+*get_or_create* method. It is pretty cheap to create a logger so we don't have to
+pass around logger objects. We can use `getLogger` with the same `name`
 value and we'll be working with the same logger configuration regardless if
 we're doing this in a different class or module.
 
 The name of the logger is important because the logging library uses dot notation to
 create hierarchies of loggers. Meaning, if we create three loggers with the names
-`app`, `app.db` and `app.api` the parent logger will be `app` and, `app.db` and `app.api`
-will be the children. A good thing to remember is that we can get a module's dot
+`app`, `app.models` and `app.api` the parent logger will be `app` and,
+`app.db` and `app.api` will be the children. Here's a visual representation:
+
+```bash
+ + app # main logger
+ |
+ + app.api # api logger, child of "app" logger
+   |
+   - app.api.routes # routes logger, child of "app" and "app.api" loggers
+   |
+   - app.api.models # models logger, sibling of "app.api.routes" logger
+ |
+ - app.utils # utils logger, sibling of "app.api" logger
+ ```
+
+A good thing to remember is that we can get a module's dot
 notation name from the global variable `__name__`. Using `__name__` to create
 our custom loggers simplifies configuration and avoids collisions:
 
@@ -126,16 +143,100 @@ def check_if_true(var):
     return bool(var)
 ```
 
-> **Best Practice:**
->   Create loggers with custom names using `__name__` to avoid collision and for
->   granular configuration.
+> **Note:**
+>   If you are defining loggers at the module level (like the example above)
+>   is better to stick to global variable naming. Meaning, use `LOG` or `LOGGER`
+>   instead of the lowercase version `log` or `logger`.
+
+<blockquote>
+  <i class="fas fa-quote-left fa-2x">&nbsp;</i>
+  <h3>Best Practice</h3>
+  <p>
+   Create loggers with custom names using `__name__` to avoid collision and for
+   granular configuration.
+  </p>
+  <i class="fas fa-quote-right fa-2x">&nbsp;</i>
+</blockquote>
 
 Keeping in mind there's a logger hierarchy is a good idea because of how log messages are
 passed around. When using a logger the message's level is checked against the logger's
 `level` attribute if it's the same or above then the log message is passed to the logger
 that's being used and every parent **unless** one of the logger in the hierarchy sets
-`propagate` to `False` -- *by default `propagate` is set to `True`* --. We'll explore
-this concept more in the next section.
+`propagate` to `False` -- *by default `propagate` is set to `True`* --.
+
+## How to configure loggers
+
+We've talked about using `basicConfig` to configure the root logger but there are [other
+ways][logging-config-options] to configure custom logger.
+The most popular way of logging configuration is using a
+[`dictConfig`][logging-dictconfig]. The examples in this article will
+show three different variations (code, `fileConfig` and `dictConfig`),
+feel free to use whatever is better for your project.
+
+Python's logging is build in a modular manner.
+A **logger** is the interface our application will use and consists of
+**formatters**, **filters** and **handlers**. As we learned before python's logging
+library already comes with some useful default values which makes defining our own
+formatters, filters and handlers optional. As a matter of fact when using a
+dictionary to configure logging the only required key is `version`, and currently
+the only valid value is `1`.
+
+<blockquote>
+  <i class="fas fa-quote-left fa-2x">&nbsp;</i>
+  <h3>Suggestion</h3>
+  <p>
+    Defining custom **filters** and **handlers** is not necessary and should only be done
+    if necessary.
+  </p>
+  <i class="fas fa-quote-right fa-2x">&nbsp;</i>
+</blockquote>
+
+Whenever we use a logger (`LOG.debug("Debug log message.")`) the first thing that happens
+is that a `LogRecord` object is created with our log message and other
+[attributes][logrecord-attrs]. This `LogRecord` instance is then passed to any **filters**
+attached to the logger instance we used. If the filter does not reject the `LogRecord`
+instance then the `LogRecord` is passed to the configured **handlers**.
+If any of the configured **handlers** are enable for the level in the passed `LogRecord`
+then the **handlers** apply any configured **filters** to the `LogRecord`.
+Finally, if the `LogRecord` is not rejected by any of the **filter** the `LogRecord`
+is emitted. A more detailed diagram can be seen in [python's documentation][logging-flow].
+Here is a simplified version:
+
+### Filters
+
+Let's start with filters. A [formatter object][formatter-object] transforms a
+`LogRecord` instance into a human readable string or a string that will be consumed
+by an external service. By default we can use any [`LogRecord` attribute][logrecord-attrs]
+or anything sent in the logging call as the `extra` parameter.
+
+For example, we can create a formatter to show all the details of where and when
+a log message happened:
+
+```python
+
+LOGGING_CONFIG = {
+    "version": 1,
+    "formatters": {
+        "short": {
+            "format": "[APP] %(levelname)s %(asctime)s %(module)s "
+                      "%(name)s.%(funcName)s:%(lineno)s: %(message)s"
+        }
+    },
+    "handlers": {
+        "standard": {
+            "class": "logging.StreamHandler",
+            "formatter": "short",
+            "level": "INFO"
+        }
+    },
+    "loggers": {
+        "app": {
+            "handlers": ["standard"],
+            "level": "DEBUG"
+        }
+    }
+}
+```
 
 [python-howto-logging]: https://docs.python.org/3/howto/logging.html
 [hitchhikers-logging]: https://docs.python-guide.org/writing/logging/
@@ -154,3 +255,6 @@ this concept more in the next section.
 [python-logging-for-library]: https://docs.python.org/3/howto/logging.html#configuring-logging-for-a-library
 [null-handler]: https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler
 [paramiko]: http://www.paramiko.org/
+[get-logger]: https://docs.python.org/3/library/logging.html#logging.getLogger
+[logging-flow]: https://docs.python.org/3/howto/logging.html#logging-flow
+[formatter-object]: https://docs.python.org/3/library/logging.html#formatter-objects

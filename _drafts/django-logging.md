@@ -38,7 +38,7 @@ confusing to me how everything defined by the dictionary came into place.
 We first have to remember that python's logging is build in a modular manner.
 A **logger** is the interface our application will use and consists of
 **formatters**, **filters** and **handlers**. As we learned before python's logging
-library already comes with some useful default which makes defining our own
+library already comes with some useful default values which makes defining our own
 formatters, filters and handlers optional. As a matter of fact when using a
 dictionary to configure logging the only required key is `version`, and currently
 the only valid value is `1`.
