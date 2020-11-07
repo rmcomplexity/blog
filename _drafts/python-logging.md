@@ -206,7 +206,7 @@ To simplify Python's logging flow we can focus on what happens in a single logge
 #### Python logging flow simplified
 
 <figure class="img center">
-  <img src="/assets/images/Python_logger_flow_simpmified.jpg"
+  <img src="/assets/images/Python_logging_flow_simplified.jpg"
        style="max-width:200px;"
        alt="PyCon 2018 logo"
        class="img-responsive">
