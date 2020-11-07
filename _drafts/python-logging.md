@@ -80,8 +80,8 @@ With the updated configuration we can now see every log level message, for examp
 
 <blockquote>
   <i class="fas fa-quote-left fa-2x">&nbsp;</i>
-  <h3>Best Practice</h3>
   <p>
+   <strong>Best Practice</strong><br />
    Define a custom log format for easier log parsing.
   </p>
   <i class="fas fa-quote-right fa-2x">&nbsp;</i>
@@ -150,8 +150,8 @@ def check_if_true(var):
 
 <blockquote>
   <i class="fas fa-quote-left fa-2x">&nbsp;</i>
-  <h3>Best Practice</h3>
   <p>
+   <strong>Best Practice</strong><br />
    Create loggers with custom names using `__name__` to avoid collision and for
    granular configuration.
   </p>
@@ -183,9 +183,9 @@ the only valid value is `1`.
 
 <blockquote>
   <i class="fas fa-quote-left fa-2x">&nbsp;</i>
-  <h3>Suggestion</h3>
   <p>
-    Defining custom **filters** and **handlers** is not necessary and should only be done
+    <strong>Suggestion</strong><br/>
+    Defining custom <strong>filters</strong> and <strong>handlers</strong> is not necessary and should only be done
     if necessary.
   </p>
   <i class="fas fa-quote-right fa-2x">&nbsp;</i>
@@ -200,7 +200,37 @@ If any of the configured **handlers** are enable for the level in the passed `Lo
 then the **handlers** apply any configured **filters** to the `LogRecord`.
 Finally, if the `LogRecord` is not rejected by any of the **filter** the `LogRecord`
 is emitted. A more detailed diagram can be seen in [python's documentation][logging-flow].
-Here is a simplified version:
+
+To simplify Python's logging flow we can focus on what happens in a single logger:
+
+#### Python logging flow simplified
+
+<figure class="img center">
+  <img src="/assets/images/Python_logger_flow_simpmified.jpg"
+       style="max-width:200px;"
+       alt="PyCon 2018 logo"
+       class="img-responsive">
+  <figcaption><em>That snake is even more impressive in real life</em></figcaption>
+</figure>
+
+Here's a few important things to note:
+
+- The previous diagram is from the logger that is being used point of view.
+- Filters, handlers and formatters are defined once and can
+be used multiple times.
+- **Only** the filters and formatters assigned to the parent's
+  handler are applied to the `LogRecord`.
+
+**There are four reason why a logger would not process a log event**:
+
+- The logger or the handler configured in the logger are not enabled
+  for the log level used.
+- A filter configured wither in the logger or the handler rejects
+  the log event.
+- A child logger does has `prooagate=False` causing events not to be passed
+  to any of the parent loggers.
+- Your are using a different logger or the logger is not a parent of the
+  one being used.
 
 ### Formatters
 
@@ -254,7 +284,6 @@ LOG.info(
     extra={"session_key": session_key, "user_id": user_id}
 )
 ```
-
 
 [python-howto-logging]: https://docs.python.org/3/howto/logging.html
 [hitchhikers-logging]: https://docs.python-guide.org/writing/logging/
