@@ -202,11 +202,11 @@ Finally, if the `LogRecord` is not rejected by any of the **filter** the `LogRec
 is emitted. A more detailed diagram can be seen in [python's documentation][logging-flow].
 Here is a simplified version:
 
-### Filters
+### Formatters
 
-Let's start with filters. A [formatter object][formatter-object] transforms a
+Let's start with formatters. A [formatter object][formatter-object] transforms a
 `LogRecord` instance into a human readable string or a string that will be consumed
-by an external service. By default we can use any [`LogRecord` attribute][logrecord-attrs]
+by an external service. We can use any [`LogRecord` attribute][logrecord-attrs]
 or anything sent in the logging call as the `extra` parameter.
 
 For example, we can create a formatter to show all the details of where and when
@@ -222,21 +222,39 @@ LOGGING_CONFIG = {
                       "%(name)s.%(funcName)s:%(lineno)s: %(message)s"
         }
     },
-    "handlers": {
-        "standard": {
-            "class": "logging.StreamHandler",
-            "formatter": "short",
-            "level": "INFO"
-        }
-    },
-    "loggers": {
-        "app": {
-            "handlers": ["standard"],
-            "level": "DEBUG"
-        }
-    }
+    #[...]
 }
 ```
+
+Whenever this formatted is used it will print the level, date and time,
+module name, function name, line number and any string sent as parameter.
+We can add other variables not present in `LogRecord`'s attributes by using
+the `extra` attribute:
+
+```python
+
+LOGGING_CONFIG = {
+    "version": 1,
+    "formatters": {
+        "short": {
+            "format": "[APP] %(levelname)s %(asctime)s %(module)s "
+                      "%(name)s.%(funcName)s:%(lineno)s: "
+#print additional data "[%(session_key)s:%(user_id)s] %(message)s"
+        }
+    },
+    #[...]
+}
+```
+
+And to send that extra data we can do it like this:
+
+```python
+LOG.info(
+    "Password change initiated",
+    extra={"session_key": session_key, "user_id": user_id}
+)
+```
+
 
 [python-howto-logging]: https://docs.python.org/3/howto/logging.html
 [hitchhikers-logging]: https://docs.python-guide.org/writing/logging/
