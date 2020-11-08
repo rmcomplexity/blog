@@ -353,8 +353,101 @@ not going to be logged because the string cannot be created.
 
 ### Filters
 
+Filters are very interesting. They can be used both at the logger level
+or at the handler level, they can be used to stop certain log events from
+being logged and they can also be used to inject additional context into
+a `LogRecord` instance which will be, eventually, logged.
+
+The `Filter` class in Python's `logging` library filters `LogRecords` by
+logger name. The filter will allow any `LogRecord` coming from the logger name
+configured in the filter and any of it's children.
+If we have these loggers configured:
+
+```
+ + app.models
+ | |
+ | - app.models.users
+ |
+ + app.views
+   |
+   - app.views.users
+   |
+   - app.views.products
+```
+
+And we can define the config like this:
+
+##### Filters definition using a dictionary
+
+```python
+LOGGING_CONFIG = {
+    "version": 1,
+    "filter": {
+        "views": {
+            "name": "app.views"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+            "filter": "views"
+        }
+    },
+    "loggers": {
+        "app": { "handlers": ["console"] }
+    }
+}
+```
+
+##### Filters definition using code
+
+##### Filters definition using a file
+
+The previous configuration will **only** allow `LogRecord` the
+`app.views`, `app.views.users` and `app.views.products`
+loggers. Note that if you are using `__name__` to instantiate loggers
+then this is the same as saying that the filter will allow any `LogRecord`
+comming from the `app.view` module or any of it's children.
+
+When you set a filter to a specific logger the filter will **only** be used
+when calling that logger directly and **not** when a descendant of said logger
+is used. For example, if we had set the filter in the previous example to the
+`app.view` logger instead of the `app` logger handler. The filter will not
+reject any `LogRecord` coming from `app.models` loggers simply because when
+using the logger `app.models`, or any of it's childrens, the filter will not be called.
+Here is how the config would look like in this example.
+
+Now that we have seen the difference between setting a filter to a logger and to
+a handler, and how can a filter reject `LogRecords` we'll see how can we create custom
+filters to prevent `LogRecords` to be dismissed based on more complicated conditions
+and/or to add more data to a `LogRecord`.
 
 
+Writing a custom filter is very simple. **Before to Python `3.2`**
+we have to subclass `logging.Filter`` and override the `filter` method:
+
+```python
+import logging
+
+class CustomFilter(logging.Filter)
+    def __init__(self, name):
+        super(self, CustomFilter)
+
+    def filter(self, record):
+        # do some cool filtering here
+        # return a Truthy value if you want the
+        # log record to go through
+```
+
+**Since Python 3.2** you can use any callable that accepts a `record` parameter
+
+```python
+def custom_filter(record):
+    # do some cool filtering here
+    # return a Truthy value if you want the
+    # log record to go through
+```
 [python-howto-logging]: https://docs.python.org/3/howto/logging.html
 [hitchhikers-logging]: https://docs.python-guide.org/writing/logging/
 [docker-logging-drivers]: https://docs.docker.com/config/containers/logging/configure/
