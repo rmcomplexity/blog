@@ -234,42 +234,86 @@ be used multiple times.
 
 ### Formatters
 
-Let's start with formatters. A [formatter object][formatter-object] transforms a
+A [formatter object][formatter-object] transforms a
 `LogRecord` instance into a human readable string or a string that will be consumed
 by an external service. We can use any [`LogRecord` attribute][logrecord-attrs]
 or anything sent in the logging call as the `extra` parameter.
 
+> **Note**
+> Formatter can only be set to **handlers**
+
 For example, we can create a formatter to show all the details of where and when
 a log message happened:
 
-```python
+##### Formatters definition using a dictionary
 
+```python
 LOGGING_CONFIG = {
     "version": 1,
     "formatters": {
-        "short": {
+        "detailed": {
             "format": "[APP] %(levelname)s %(asctime)s %(module)s "
                       "%(name)s.%(funcName)s:%(lineno)s: %(message)s"
         }
     },
-    #[...]
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "detailed",
+            "level": "INFO"
+        }
+    }
 }
 ```
 
+##### Formatters definition using code
+
+```python
+import sys
+import logging
+
+# create Formatter
+formatter = logging.Formatter(
+    "[APP] %(levelname)s %(asctime)s %(module)s "
+    "%(name)s.%(funcName)s:%(lineno)s: %(message)s"
+)
+stream_handler = logging.StreamHandler(sys.stdout)
+stream_handler.setFormatter(formatter)
+```
+
+##### Formatters definition using a file
+
+```ini
+[formatters]
+key=detailed
+
+[handlers]
+key=console
+
+[formatter_detailed]
+format=[APP] %(levelname)s %(asctime)s %(module)s %(name)s.%(funcName)s:%(lineno)s: %(message)s
+datefmt=
+class=logging.Formatter
+
+[handler_console]
+class=StreamHandler
+level=DEBUG
+formatter=detailed
+args=(sys.stdout,)
+```
 Whenever this formatted is used it will print the level, date and time,
 module name, function name, line number and any string sent as parameter.
 We can add other variables not present in `LogRecord`'s attributes by using
 the `extra` attribute:
 
 ```python
-
 LOGGING_CONFIG = {
     "version": 1,
     "formatters": {
         "short": {
             "format": "[APP] %(levelname)s %(asctime)s %(module)s "
                       "%(name)s.%(funcName)s:%(lineno)s: "
-#print additional data "[%(session_key)s:%(user_id)s] %(message)s"
+                      "[%(session_key)s:%(user_id)s] %(message)s" # add extra data
         }
     },
     #[...]
@@ -279,11 +323,37 @@ LOGGING_CONFIG = {
 And to send that extra data we can do it like this:
 
 ```python
+# app.api.UserManager.list_users
+
 LOG.info(
-    "Password change initiated",
+    "Listing users",
     extra={"session_key": session_key, "user_id": user_id}
 )
 ```
+
+The output would be:
+
+```bash
+[APP] INFO 2020-11-07 20:47:00,123 user_manager app.api.user_name.list_users:15 [123abcd:api_usr] Listing users
+```
+
+The downside of referencing variables sent via the `extra` parameter
+in a format is that if the variable is not passed the log event is
+not going to be logged because the string cannot be created.
+
+<blockquote>
+  <i class="fas fa-quote-left fa-2x">&nbsp;</i>
+  <p>
+    <strong>Best Practice</strong><br/>
+    Make sure to send every additional variable that the configured
+    formatter references if using the `extra` parameter 
+  </p>
+  <i class="fas fa-quote-right fa-2x">&nbsp;</i>
+</blockquote>
+
+### Filters
+
+
 
 [python-howto-logging]: https://docs.python.org/3/howto/logging.html
 [hitchhikers-logging]: https://docs.python-guide.org/writing/logging/
