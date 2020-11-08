@@ -448,6 +448,32 @@ def custom_filter(record):
     # return a Truthy value if you want the
     # log record to go through
 ```
+
+The way to configure these custom classes/callables using a dictionary or a file
+is by using the special keyword `()`. Whenever Python's logging config sees
+`()` it will create an instance of the class (dot notation has to be used).
+
+> **Note**
+> When using a dictionary to configure logging you can use the `()`
+> keyword to configure custom handlers or filters
+
+Another interesting thing about filters is that they see virtually every `LogRecord`
+that *might* be logged. This makes filter a great place to further customize `LogRecords`
+
+##### Custom filter example
+
+The following custom filter will apply a mask to every password passes to a `LogRecord`
+
+```python
+def pwd_mask_filter(record)
+    # a Logger cord instance holds all it's arguments in record.args
+    def mask_pwd():
+        return '*' * 20
+
+    if record.args.has_key("pwd"):
+        record.args["pwd"] = mask_pwd()
+```
+
 [python-howto-logging]: https://docs.python.org/3/howto/logging.html
 [hitchhikers-logging]: https://docs.python-guide.org/writing/logging/
 [docker-logging-drivers]: https://docs.docker.com/config/containers/logging/configure/
