@@ -12,3 +12,37 @@
     window.setInterval(blinkCursor, 300);
   })();
 </script>
+<script type="text/javascript">
+  "use strict";
+  (function() {
+    function toggle(toggler, cls) {
+        const content = document.querySelector('.toggler + .' + cls);
+        const iconShow = toggler.querySelector('.icon-show');
+        const iconHide = toggler.querySelector('.icon-hide');
+        if(content.style.display === 'none') {
+            content.style.display = 'block';
+            iconShow.style.display = 'none';
+            iconHide.style.display = 'inline';
+        } else {
+            content.style.display = 'none';
+            iconShow.style.display = 'inline';
+            iconHide.style.display = 'none';
+        }
+    }
+    const togglers = document.querySelectorAll('.toggler');
+    togglers.forEach(toggler => {
+        const iconShow = toggler.querySelector('.icon-show');
+        const iconHide = toggler.querySelector('.icon-hide');
+        if (toggler.dataset.default !== "true"){
+            const content = document.querySelector('.toggler + .' + toggler.dataset.cls);
+            content.style.display = 'none';
+            iconShow.style.display = 'inline';
+            iconHide.style.display = 'none';
+        } else {
+            iconShow.style.display = 'none';
+            iconHide.style.display = 'inline';
+        }
+      toggler.onclick = function onclick() { toggle(toggler, toggler.dataset.cls); }
+    });
+  })();
+</script>

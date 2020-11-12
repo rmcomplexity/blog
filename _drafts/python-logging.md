@@ -1,22 +1,24 @@
 ---
 layout: post
-title:  "Tales From The Keyboard: Logging with Django and Docker"
-date:   2018-05-01 10:00:00 -0600
+title:  "Introduction to Python's logging library"
+date:   2020-11-11 10:00:00 -0600
 categories: article
-excerpt: Logging in python is a very powerful feature, when using Django a few
-    things are different and by adding Docker on top logging can become a
-    handful. We'll go through some real world examples and recommendations.
+excerpt: Logging is one of the best ways to keep track of what is going on inside your code while
+    it is running. Python comes with a very powerful logging library but with great power..
+    things start to get a bit complicated.
 tags: 
   - Python
   - Logging
-  - Django
-  - Docker
+  - Fundamentals
 seo:
   type: Article
 author_name: Josue Balandrano Coronel
 author: rmcomplexity
 image: /assets/images/logging_with_django_and_docker/logging-with-django-and-docker.png
 ---
+
+* Table of Contents
+{:toc}
 
 Logging is one of the best ways to keep track of what is going on inside your code while
 it is running. Python comes with a very powerful logging library but with great power..
@@ -78,16 +80,11 @@ With the updated configuration we can now see every log level message, for examp
 [DEBUG]:13 - Debug log message.
 ```
 
-<blockquote>
-  <i class="fas fa-quote-left fa-2x">&nbsp;</i>
-  <p>
-   <strong>Best Practice</strong><br />
-   Define a custom log format for easier log parsing.
-  </p>
-  <i class="fas fa-quote-right fa-2x">&nbsp;</i>
-</blockquote>
+> <i class="fab fa-python">&nbsp;</i> **Best Practice** <br />
+> Define a custom log format for easier log parsing.
 
-> **Note:** Use the `LogRecord` [class' attributes][logrecord-attrs] to configure a custom format.
+> <i class="fas fa-bolt">&nbsp;</i> **Note:** <br />
+> Use the `LogRecord` [class' attributes][logrecord-attrs] to configure a custom format.
 
 `basicConfig` will always be called by the root logger if no handlers are defined,
 unless the parameter `force` is set to `True` (`logging.basicConfig(force=True)`).
@@ -143,20 +140,14 @@ def check_if_true(var):
     return bool(var)
 ```
 
-> **Note:**
+> <i class="fas fa-bolt">&nbsp;</i> **Note:**
 >   If you are defining loggers at the module level (like the example above)
 >   is better to stick to global variable naming. Meaning, use `LOG` or `LOGGER`
 >   instead of the lowercase version `log` or `logger`.
 
-<blockquote>
-  <i class="fas fa-quote-left fa-2x">&nbsp;</i>
-  <p>
-   <strong>Best Practice</strong><br />
-   Create loggers with custom names using `__name__` to avoid collision and for
-   granular configuration.
-  </p>
-  <i class="fas fa-quote-right fa-2x">&nbsp;</i>
-</blockquote>
+> <i class="fab fa-python">&nbsp;</i> **Best Practice** <br />
+> Create loggers with custom names using `__name__` to avoid collision and for
+> granular configuration.
 
 Keeping in mind there's a logger hierarchy is a good idea because of how log messages are
 passed around. When using a logger the message's level is checked against the logger's
@@ -181,16 +172,6 @@ formatters, filters and handlers optional. As a matter of fact when using a
 dictionary to configure logging the only required key is `version`, and currently
 the only valid value is `1`.
 
-<blockquote>
-  <i class="fas fa-quote-left fa-2x">&nbsp;</i>
-  <p>
-    <strong>Suggestion</strong><br/>
-    Defining custom <strong>filters</strong> and <strong>handlers</strong> is not necessary and should only be done
-    if necessary.
-  </p>
-  <i class="fas fa-quote-right fa-2x">&nbsp;</i>
-</blockquote>
-
 Whenever we use a logger (`LOG.debug("Debug log message.")`) the first thing that happens
 is that a `LogRecord` object is created with our log message and other
 [attributes][logrecord-attrs]. This `LogRecord` instance is then passed to any **filters**
@@ -206,11 +187,13 @@ To simplify Python's logging flow we can focus on what happens in a single logge
 #### Python logging flow simplified
 
 <figure class="img center">
+<a href="/assets/images/Python_logging_flow_simplified-1.jpg">
   <img src="/assets/images/Python_logging_flow_simplified-1.jpg"
-       style="max-width:200px;"
+       style="max-width:800px;"
        alt="Python logging flow simplified"
        class="img-responsive">
-  <figcaption><em>That snake is even more impressive in real life</em></figcaption>
+  <figcaption><em>Logger sounds like a cool frogger fork</em></figcaption>
+</a>
 </figure>
 
 Here's a few important things to note:
@@ -219,17 +202,17 @@ Here's a few important things to note:
 - Filters, handlers and formatters are defined once and can
 be used multiple times.
 - **Only** the filters and formatters assigned to the parent's
-  handler are applied to the `LogRecord`.
+  handler are applied to the `LogRecord` (this is the loop that says "Parent Loggers\*")
 
-**There are four reason why a logger would not process a log event**:
+Based on the diagram **there are four reason why a logger would not process a log event**:
 
-- The logger or the handler configured in the logger are not enabled
+1. The logger or the handler configured in the logger are not enabled
   for the log level used.
-- A filter configured wither in the logger or the handler rejects
+2. A filter configured in the logger or the handler rejects
   the log event.
-- A child logger does has `prooagate=False` causing events not to be passed
+3. A child logger has `prooagate=False` causing events not to be passed
   to any of the parent loggers.
-- Your are using a different logger or the logger is not a parent of the
+4. Your are using a different logger or the logger is not a parent of the
   one being used.
 
 ### Formatters
@@ -239,14 +222,20 @@ A [formatter object][formatter-object] transforms a
 by an external service. We can use any [`LogRecord` attribute][logrecord-attrs]
 or anything sent in the logging call as the `extra` parameter.
 
-> **Note**
+> <i class="fas fa-bolt">&nbsp;</i> **Note:**
 > Formatter can only be set to **handlers**
 
 For example, we can create a formatter to show all the details of where and when
 a log message happened:
 
-##### Formatters definition using a dictionary
+{::options parse_block_html="true" /}
 
+<h5 class="toggler" data-cls="fmts-dict-config" data-default="true">
+    Formatters definition using a dictionary
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="fmts-dict-config">
 ```python
 LOGGING_CONFIG = {
     "version": 1,
@@ -265,9 +254,15 @@ LOGGING_CONFIG = {
     }
 }
 ```
+</div>
 
-##### Formatters definition using code
 
+<h5 class="toggler" data-cls="fmts-code">
+    Formatters definition using code
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="fmts-code">
 ```python
 import sys
 import logging
@@ -280,9 +275,15 @@ formatter = logging.Formatter(
 stream_handler = logging.StreamHandler(sys.stdout)
 stream_handler.setFormatter(formatter)
 ```
+</div>
 
-##### Formatters definition using a file
 
+<h5 class="toggler" data-cls="fmts-file">
+    Formatters definition using a file
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="fmts-file">
 ```ini
 [formatters]
 key=detailed
@@ -301,11 +302,19 @@ level=DEBUG
 formatter=detailed
 args=(sys.stdout,)
 ```
-Whenever this formatted is used it will print the level, date and time,
+</div>
+
+Whenever this formatter is used it will print the level, date and time,
 module name, function name, line number and any string sent as parameter.
 We can add other variables not present in `LogRecord`'s attributes by using
 the `extra` attribute:
 
+<h5 class="toggler" data-cls="fmts-dict-extra" data-default="true">
+    Formatter with extra atributes using a dictionary
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="fmts-dict-extra">
 ```python
 LOGGING_CONFIG = {
     "version": 1,
@@ -319,6 +328,50 @@ LOGGING_CONFIG = {
     #[...]
 }
 ```
+</div>
+<h5 class="toggler" data-cls="fmts-code-extra">
+    Formatter with extra atributes using code
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="fmts-code-extra">
+```python
+import sys
+import logging
+
+# create Formatter
+formatter = logging.Formatter(
+    "[APP] %(levelname)s %(asctime)s %(module)s "
+    "%(name)s.%(funcName)s:%(lineno)s: "
+    "[%(session_key)s:%(user_id)s] %(message)s" # add extra data
+)
+```
+</div>
+<h5 class="toggler" data-cls="fmts-file-extra">
+    Formatter with extra atributes using a dictionary
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="fmts-file-extra">
+```python
+[formatters]
+key=detailed
+
+[handlers]
+key=console
+
+[formatter_detailed]
+format=[APP] %(levelname)s %(asctime)s %(module)s %(name)s.%(funcName)s:%(lineno)s: [%(session_key)s:%(user_id)s] %(message)s
+datefmt=
+class=logging.Formatter
+
+[handler_console]
+class=StreamHandler
+level=DEBUG
+formatter=detailed
+args=(sys.stdout,)
+```
+</div>
 
 And to send that extra data we can do it like this:
 
@@ -341,15 +394,9 @@ The downside of referencing variables sent via the `extra` parameter
 in a format is that if the variable is not passed the log event is
 not going to be logged because the string cannot be created.
 
-<blockquote>
-  <i class="fas fa-quote-left fa-2x">&nbsp;</i>
-  <p>
-    <strong>Best Practice</strong><br/>
-    Make sure to send every additional variable that the configured
-    formatter references if using the `extra` parameter 
-  </p>
-  <i class="fas fa-quote-right fa-2x">&nbsp;</i>
-</blockquote>
+> <i class="fab fa-python">&nbsp;</i> **Best Practice** <br/>
+> Make sure to send every additional variable that the configured
+> formatter references if using the `extra` parameter
 
 ### Filters
 
@@ -453,7 +500,7 @@ The way to configure these custom classes/callables using a dictionary or a file
 is by using the special keyword `()`. Whenever Python's logging config sees
 `()` it will create an instance of the class (dot notation has to be used).
 
-> **Note**
+> <i class="fas fa-bolt">&nbsp;</i> **Note:**
 > When using a dictionary to configure logging you can use the `()`
 > keyword to configure custom handlers or filters
 
@@ -465,6 +512,8 @@ that *might* be logged. This makes filter a great place to further customize `Lo
 The following custom filter will apply a mask to every password passes to a `LogRecord`
 
 ```python
+# module: app.logging.filters
+
 def pwd_mask_filter(record)
     # a Logger cord instance holds all it's arguments in record.args
     def mask_pwd():
@@ -472,6 +521,69 @@ def pwd_mask_filter(record)
 
     if record.args.has_key("pwd"):
         record.args["pwd"] = mask_pwd()
+```
+
+##### Custom filter configuration example using a dictionary
+
+```python
+LOGGING_CONFIG = {
+    "version": 1,
+    "formatters": {
+        "detailed": {
+            "format": "[APP] %(levelname)s %(asctime)s %(module)s "
+                      "%(name)s.%(funcName)s:%(lineno)s: %(message)s"
+        }
+    },
+    "filters": {
+        "mask_pwd": {
+            "()": "app.logging.filters.mask_pwd"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "detailed",
+            "level": "INFO",
+            "filters: ["mask_pwd"]
+        }
+    }
+}
+```
+
+##### Custom filter configuration example using code
+
+```python
+import sys
+import logging
+
+# create Formatter
+formatter = logging.Formatter(
+    "[APP] %(levelname)s %(asctime)s %(module)s "
+    "%(name)s.%(funcName)s:%(lineno)s: %(message)s"
+)
+stream_handler = logging.StreamHandler(sys.stdout)
+stream_handler.setFormatter(formatter)
+```
+
+##### Custom filter configuration example using a file
+
+```ini
+[formatters]
+key=detailed
+
+[handlers]
+key=console
+
+[formatter_detailed]
+format=[APP] %(levelname)s %(asctime)s %(module)s %(name)s.%(funcName)s:%(lineno)s: %(message)s
+datefmt=
+class=logging.Formatter
+
+[handler_console]
+class=StreamHandler
+level=DEBUG
+formatter=detailed
+args=(sys.stdout,)
 ```
 
 [python-howto-logging]: https://docs.python.org/3/howto/logging.html
