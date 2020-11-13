@@ -424,8 +424,12 @@ If we have these loggers configured:
 
 And we can define the config like this:
 
-##### Filters definition using a dictionary
-
+<h5 class="toggler" data-cls="filters-dict" data-default="true">
+    Filters definition using a dictionary
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="filters-dict">
 ```python
 LOGGING_CONFIG = {
     "version": 1,
@@ -446,12 +450,48 @@ LOGGING_CONFIG = {
     }
 }
 ```
+</div>
 
-##### Filters definition using code
+<h5 class="toggler" data-cls="filters-code">
+    Filters definition using code
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="filters-code">
+```python
+import logging
 
-##### Filters definition using a file
+views_filter = logging.Filter(name="views")
+console_handler.addFilter(views_filter)
+console_logger.addHandler(console_handler)
+```
+</div>
 
-The previous configuration will **only** allow `LogRecord` the
+<h5 class="toggler" data-cls="filters-file">
+    Filters definition using a file
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="filters-file">
+```ini
+[filters]
+key=views
+
+[handlers]
+key=console
+
+[filter_views]
+name=views
+
+[handler_console]
+class=StreamHandler
+level=DEBUG
+filters=views
+args=(sys.stdout,)
+```
+</div>
+
+The previous configuration will **only** allow `LogRecord` coming from the
 `app.views`, `app.views.users` and `app.views.products`
 loggers. Note that if you are using `__name__` to instantiate loggers
 then this is the same as saying that the filter will allow any `LogRecord`
@@ -482,18 +522,20 @@ class CustomFilter(logging.Filter)
         super(self, CustomFilter)
 
     def filter(self, record):
-        # do some cool filtering here
-        # return a Truthy value if you want the
-        # log record to go through
+        """Filter out records that passes a specific key argument"""
+
+        # We can access the log event's argument via record.args
+        return record.args.get("instrumentation") == "console"
 ```
 
 **Since Python 3.2** you can use any callable that accepts a `record` parameter
 
 ```python
 def custom_filter(record):
-    # do some cool filtering here
-    # return a Truthy value if you want the
-    # log record to go through
+    """Filter out records that passes a specific key argument"""
+
+    # We can access the log event's argument via record.args
+    return record.args.get("instrumentation") == "console"
 ```
 
 The way to configure these custom classes/callables using a dictionary or a file
@@ -505,7 +547,8 @@ is by using the special keyword `()`. Whenever Python's logging config sees
 > keyword to configure custom handlers or filters
 
 Another interesting thing about filters is that they see virtually every `LogRecord`
-that *might* be logged. This makes filter a great place to further customize `LogRecords`
+that *might* be logged. This makes filters a great place to further customize `LogRecords`.
+This is called "adding context".
 
 ##### Custom filter example
 
@@ -520,6 +563,8 @@ def pwd_mask_filter(record)
         return '*' * 20
 
     if record.args.has_key("pwd"):
+        record.args["pwd"] = mask_pwd()
+    elif record.args.has_key("password"):
         record.args["pwd"] = mask_pwd()
 ```
 
