@@ -511,8 +511,8 @@ filters to prevent `LogRecords` to be dismissed based on more complicated condit
 and/or to add more data to a `LogRecord`.
 
 
-Writing a custom filter is very simple. **Before to Python `3.2`**
-we have to subclass `logging.Filter`` and override the `filter` method:
+Writing a custom filter is very simple. **Before to Python 3.2**
+we have to subclass `logging.Filter` and override the `filter` method:
 
 ```python
 import logging
@@ -552,7 +552,8 @@ This is called "adding context".
 
 ##### Custom filter example
 
-The following custom filter will apply a mask to every password passes to a `LogRecord`
+The following custom filter will apply a mask to every password passed to a `LogRecord`
+**if** the `pwd` or `password` key is used.
 
 ```python
 # module: app.logging.filters
@@ -568,7 +569,12 @@ def pwd_mask_filter(record)
         record.args["pwd"] = mask_pwd()
 ```
 
-##### Custom filter configuration example using a dictionary
+<h5 class="toggler" data-cls="filters-custom-dict" data-default="true">
+    Custom filter configuration example using a dictionary
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="filters-custom-dict">
 
 ```python
 LOGGING_CONFIG = {
@@ -594,9 +600,14 @@ LOGGING_CONFIG = {
     }
 }
 ```
+</div>
 
-##### Custom filter configuration example using code
-
+<h5 class="toggler" data-cls="filters-custom-code">
+    Custom filter configuration example using code
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="filters-custom-code">
 ```python
 import sys
 import logging
@@ -609,9 +620,14 @@ formatter = logging.Formatter(
 stream_handler = logging.StreamHandler(sys.stdout)
 stream_handler.setFormatter(formatter)
 ```
+</div>
 
-##### Custom filter configuration example using a file
-
+<h5 class="toggler" data-cls="filters-custom-file">
+    Custom filter configuration example using a file
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="filters-custom-file">
 ```ini
 [formatters]
 key=detailed
@@ -630,6 +646,49 @@ level=DEBUG
 formatter=detailed
 args=(sys.stdout,)
 ```
+</div>
+
+### Handlers
+
+Handlers are objects that implement how formatters and filters are used. if we remember the flow diagram we can see
+that whenever we use a logger the handlers of all the parent loggers are going to be called recursivley.
+This is where the entire picture comes together and we can take a look at a complete loggin configuration
+using everything else we've talked about.
+
+For instance, the following configuration makes sure that every log is printed to the standard output, uses a filter
+to select a different handler depending if the application is running in debug mode or not and it uses a different
+format for each different environment.
+
+
+<h5 class="toggler" data-cls="filters-custom-file">
+    Configuration using a dict
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="filters-custom-file">
+```python
+```
+</div>
+
+<h5 class="toggler" data-cls="filters-custom-file">
+    Configuration using code
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="filters-custom-file">
+```python
+```
+</div>
+
+<h5 class="toggler" data-cls="filters-custom-file">
+    Configuration using a file
+    <i class="icon-show fas fa-angle-down" />
+    <i class="icon-hide fas fa-angle-up"/>
+</h5>
+<div class="filters-custom-file">
+```ini
+```
+</div>
 
 [python-howto-logging]: https://docs.python.org/3/howto/logging.html
 [hitchhikers-logging]: https://docs.python-guide.org/writing/logging/
