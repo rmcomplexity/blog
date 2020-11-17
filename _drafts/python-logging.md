@@ -650,14 +650,23 @@ args=(sys.stdout,)
 
 ### Handlers
 
-Handlers are objects that implement how formatters and filters are used. if we remember the flow diagram we can see
+Handlers are objects implement how formatters and filters are used. if we remember the logging flow diagram we can see
 that whenever we use a logger the handlers of all the parent loggers are going to be called recursivley.
-This is where the entire picture comes together and we can take a look at a complete loggin configuration
-using everything else we've talked about.
 
-For instance, the following configuration makes sure that every log is printed to the standard output, uses a filter
+Python offers a list of very useful [handlers][logging-handlers]. Handler classes have a very simple API and in most
+cases we will only use these classes to add a formatter, zero or more filters and setting the logging level.
+
+> <i class="fas fa-bolt">&nbsp;</i> **Note:** <br />
+> Only **one** formatter can be set to a handler.
+
+Since a handler definition is very simple I'm going to skip the configuration example here and instead show you
+a full logging configuration example in the next section
+
+### Logging configuration example
+
+The following configuration makes sure that every log is printed to the standard output, uses a filter
 to select a different handler depending if the application is running in debug mode or not and it uses a different
-format for each different environment.
+format for each different environment (based on the debug flag).
 
 
 <h5 class="toggler" data-cls="filters-custom-file">
@@ -667,6 +676,53 @@ format for each different environment.
 </h5>
 <div class="filters-custom-file">
 ```python
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "long": {
+            "format": "[APP] {levelname} {asctime} {module} "
+                      "{name}.{funcName}:{lineno:d}: {message}"
+            "style": "{"
+        },
+        "short": {
+            "format": "[APP] {levelname}: {message}"
+            "style": "{"
+        }
+    },
+    "filters": {
+        "debug_true": {
+            "()": "app.logging.RequireDebugTrue"
+        },
+        "debug_false": {
+            "()": "app.logging.RequireDebugFalse"
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler"
+            "formatter": "short",
+            "filters": ["debug_false"]
+        },
+        "console_debug": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler"
+            "formatter": "long",
+            "filters": ["debug_true"]
+        }
+    },
+    "loggers": {
+        "celery": {
+            "handlers": ["console"],
+            "level": INFO
+        },
+        "app.portal": {
+            "handlers": ["console", "console_debug"],
+            "level": "DEBUG"
+        }
+    }
+}
 ```
 </div>
 
@@ -677,6 +733,44 @@ format for each different environment.
 </h5>
 <div class="filters-custom-file">
 ```python
+import logging
+import app.settings
+
+def require_debug_true_filter():
+    """Only process records when DEBUG is True"""
+    return app.settings.DEBUG
+
+def require_debug_false_filter():
+    """Only process records when DEBUG is False"""
+    return !app.settings.DEBUG
+
+# create logger
+LOG = logging.getLogger(__name__)
+LOG.setLeve(logging.DEBUG)
+
+# long formatter
+long_fmt = logging.Formatter(
+    "[APP] {levelname} {asctime} {module} {name}.{funcName}:{lineno:d}: {message}",
+    style="{"
+)
+
+# short formatter
+short_fmt = logging.Formatter(
+    "[APP] {levelname} {asctime} {module} {name}.{funcName}:{lineno:d}: {message}",
+    style="{"
+)
+
+# console handler config
+console_handler = logging.StreamHandler()
+ch.setLevel(logging.INFO)
+ch.setFormatter(short_fmt)
+ch.addFilter(require_debug_false_filter)
+
+# console debug handler config
+console_handler = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+ch.setFormatter(long_fmt)
+ch.addFilter(require_debug_false_filter)
 ```
 </div>
 
