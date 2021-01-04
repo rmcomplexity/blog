@@ -754,7 +754,7 @@ For simplicity we're gonna write every class and function we're going to use in 
 ```python
 import logging
 from sys import getsizeof
-from typing import ClassVar, Any, Optional
+from typing import ClassVar, Any, Optional, cast
 from collections.abc import Callable
 from dataclasses import dataclass, field, InitVar, asdict
 
@@ -794,14 +794,9 @@ class Pager:
     The prev and next paramteres are meant to be links sent in the 'Link' header.
     """
 
-    page_num: InitVar[int]
+    page: int = cast(int, PositiveNumberValidator())
     prev: str 
     next: str
-    page: ClassVar[PositiveNumberValidator] = PositiveNumberValidator()
-
-    def __post_init__(self, page_num):
-        """Assign page value to descriptor."""
-        self.page = page_num
 
 @dataclass(order=True)
 class HTTPResponse:
@@ -897,8 +892,7 @@ With a more real example we can see the strengths and weaknesses of data classes
 
 1. When creating data classes that can be compared and ordered the order in which you define the fields matters. Read-ability can take a hit because of this. It is recommended to try and separate fields by type. In the `HTTPResponse` class we have first private attributes, then instance attributes, init only parameters and class attributes.
 2. Field definition order also matters when using default values. Since `__init__` 's arguments are implemented using the same order the fields are defined, we have to first define attributes without default values and then attributes with default values.
-3. Using descriptors requires some oeverhead. Since descriptors only work on class attributes and class attributes are not included in the `__init__` method, we have to always create an init-only parameter and then store that value using the descriptor in `__post_init__`. You can see an example in the `Pager` class implementation.
-4. When using `frozen=True` we cannot update values in `__post_init__`
-5. We have to manually optimize attribute access if needed. Meaning, adding `__slots__`. [Real Python has a great example of this.](https://realpython.com/python-data-classes/#optimizing-data-classes)
+3. When using `frozen=True` we cannot update values in `__post_init__`
+4. We have to manually optimize attribute access if needed. Meaning, adding `__slots__`. [Real Python has a great example of this.](https://realpython.com/python-data-classes/#optimizing-data-classes)
 
 I hope this article sheds some light on how and when to use data classes. If you like it, please follow this blog and make sure to follow me on [twitter](http://twitter.com/rmcomplexity).
