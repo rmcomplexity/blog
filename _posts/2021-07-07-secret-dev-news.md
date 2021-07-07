@@ -32,6 +32,7 @@ These news are **secret**, keep them in the down low and don't share them with a
 13. You don't need everything in your tech stack.
 14. Your architecture is unnecessarily complicated.
 15. Your documentation is not good.
+16. Every computer system is compromised.
 
 <figure class="img center">
   <img src="/assets/images/george-carlin-secret-news.gif"
