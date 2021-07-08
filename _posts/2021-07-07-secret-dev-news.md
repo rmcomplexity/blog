@@ -15,7 +15,7 @@ author: rmcomplexity
 image: /assets/images/developer-secret-news.png
 ---
 
-These news are **secret**, keep them in the down low and don't share them with anyone.
+These are **secret** news, keep them in the down low and don't share them with anyone.
 
 1. We write unnecessary code.
 2. What we think the code will do is wrong.
